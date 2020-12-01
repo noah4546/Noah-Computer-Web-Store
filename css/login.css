@@ -1,0 +1,29 @@
+/* login */
+form {
+    width: 30%;
+    margin: 80px 35%;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form input {
+    margin-bottom: 10px;
+    font-size: 1.7em;
+    padding: 10px;
+    clear: both;
+}
+
+.error {
+    clear: both;
+}
+
+form input[type=text], form input[type=password] {
+    width: 96%;
+}
+
+form input[type=submit] {
+    width: 100%;
+}

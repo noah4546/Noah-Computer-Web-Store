@@ -1,0 +1,46 @@
+/* header */
+header {
+    display: grid;
+    grid-template-columns: 15% 70% 10% 5%;
+    padding: 30px;
+    border-bottom: 2px solid black;
+}
+
+/*
+.header-logo {
+
+}
+*/
+
+.header-search input[type='search'] {
+    font-size: 1.6em;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.header-search input[type='image'] {
+    width: 25px;
+    padding: 2px;
+
+    position: relative;
+    top: 6px;
+    left: -35px;
+}
+
+.header-user {
+    display: grid;
+    grid-template-columns: 50px auto;
+}
+
+.header-user-image {
+    grid-row: span 2;
+}
+
+.header-user img {
+    width: 40px;
+}
+
+.header-cart img {
+    width: 40px;
+}

@@ -11,7 +11,7 @@
 session_start();
 
 if (!isset($_SESSION['loggedin'])) {
-    $_SESSION['loggedin'] = false;
+    header("Location: login.php");
 } 
 
 $loggedin = $_SESSION['loggedin'];
@@ -57,7 +57,7 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-        
+            <h2><a href="php/logout.php">Log out</a></h2>
         </main>
         <footer>
         

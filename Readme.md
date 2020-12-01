@@ -5,7 +5,7 @@ To deliver a user-friendly online store for customers across Canada to purchase 
 
 ## Set-up:
 1. Put this code on a server in the desired location
-2. Run the php/startup.php file on the server (Creates mySQL tables)
+2. Edit the php/connect.php file and change to your own database connection
 3. Delete startup.php file (security)
 4. Login and create products
 
