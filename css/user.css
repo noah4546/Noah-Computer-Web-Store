@@ -1,0 +1,20 @@
+.user-options {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin: 30px 20%;
+}
+
+.user-options div {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px 30px;
+    padding: 10px;
+}
+
+.user-options div h2 {
+    text-align: center;
+}
+
+.user-info {
+    margin: 0 25%;
+}

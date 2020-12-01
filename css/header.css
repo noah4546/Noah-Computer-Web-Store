@@ -6,11 +6,9 @@ header {
     border-bottom: 2px solid black;
 }
 
-/*
 .header-logo {
-
+    margin-top: 7px;
 }
-*/
 
 .header-search input[type='search'] {
     font-size: 1.6em;

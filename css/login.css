@@ -20,10 +20,33 @@ form input {
     clear: both;
 }
 
-form input[type=text], form input[type=password] {
+form input[type=text], form input[type=password], form input[type=email] {
     width: 96%;
 }
 
 form input[type=submit] {
     width: 100%;
+}
+
+.error {
+    color: red;
+}
+
+.password-policy {
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-row-gap: 5px;
+}
+
+.password-policy-rule {
+    text-align: center;
+}
+
+.password-policy-rule li {
+    display: inline;
+    margin: 10px;
 }

@@ -96,9 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h1>Noah Computers</h1>
                 <h2>Sign In</h2>
 
-                <input type="text" name="username" placeholder="Username" />
+                <input type="text" name="username" placeholder="Username" required/>
                 <span class="error"><?php echo $username_err ?></span>
-                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" required/>
                 <span class="error"><?php echo $password_err ?></span>
                 <input type="submit" value="SIGN IN" />
 

@@ -10,11 +10,16 @@
  */
 session_start();
 
-if (!isset($_SESSION['loggedin'])) {
+require_once 'php/connect.php';
+
+if (!isset($_SESSION['loggedin']) && !isset($_SESSION['id']) && !isset($_SESSION['username'])) {
+    session_destroy();
     header("Location: login.php");
 } 
 
 $loggedin = $_SESSION['loggedin'];
+$id = $_SESSION['id'];
+
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -24,6 +29,7 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/user.css">
         
         <script src="js/main.js"></script>
     </head>
@@ -57,7 +63,26 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-            <h2><a href="php/logout.php">Log out</a></h2>
+            <div class="user-options">
+                <div>
+                    <h2><a href="php/logout.php">Logout</a></h2>
+                </div>
+                <div>
+                    <h2><a href="php/deleteuser.php">Delete user</a></h2>
+                </div>
+                <div>
+                    <h2><a href="order_history.php">Order History</a></h2>
+                </div>
+                <div>
+                    <h2><a href="change_password.php">Change Password</a></h2>
+                </div>
+                <div>
+                    <h2><a href="change_address.php">Change Address</a></h2>
+                </div>
+            </div>
+            <div class="user-info" id="user_info">
+                
+            </div>
         </main>
         <footer>
         

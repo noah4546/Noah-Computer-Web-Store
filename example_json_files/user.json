@@ -1,0 +1,49 @@
+{
+    "user" : {
+        "id" : 1,
+        "username" : "user",
+        "email" : "user@example.com",
+        "active" : 1,
+        "admin" : 0,
+        "created" : "2020-12-01 10:27:18",
+        "address" : {
+            "street_address" : "123 Bay st",
+            "city" : "Hamilton",
+            "province" : "Ontario",
+            "postal" : "L7S 1K4"
+        },
+        "cart" : {
+            "id" : 1,
+            "status" : "open",
+            "items" : [
+                {
+                    "product_id" : 1,
+                    "price" : 25.99,
+                    "discount": 2.99,
+                    "quantity" : 1
+                }
+            ]
+        },
+        "orders" : [
+            {
+                "id" : 0,
+                "total" : 729.99,
+                "status" : "shipped",
+                "items" : [
+                    {
+                        "product_id" : 1,
+                        "price" : 25.99,
+                        "discount" : 2.99,
+                        "quantity" : 10
+                    },
+                    {
+                        "product_id" : 2,
+                        "price" : 499.99,
+                        "discount" : 0,
+                        "quantity" : 1
+                    }
+                ]
+            }
+        ]
+    }
+}
