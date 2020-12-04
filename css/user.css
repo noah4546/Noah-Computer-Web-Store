@@ -15,6 +15,68 @@
     text-align: center;
 }
 
+.error-text {
+    color: red;
+}
+
+.error {
+    float: left;
+    clear: left;
+    font-size: 1em;
+}
+
 .user-info {
-    margin: 0 25%;
+    margin: 0 15%;
+}
+
+.user-info table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.user-info td{
+    border-bottom:  1px solid lightgray;
+    padding: 10px;
+    font-size: 1.2em;
+    vertical-align: top;
+}
+
+.user-info td:nth-child(2) {
+    font-weight: 600;
+}
+
+.user-info button {
+    height: 40px;
+    font-size: 1.1em;
+    width: 100px;
+}
+
+.user-info form input {
+    float: left;
+    clear: left;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    width: 60%;
+    padding: 5px;
+}
+
+.user-info form input[type=submit] {
+    padding: 5px;
+    font-size: 1em;
+}
+
+.user-info form label {
+    float: left;
+    clear: left;
+    font-weight: 100;
+    text-align: right;
+    margin-top: 5px;
+}
+
+#postal {
+    width: 80px;
+}
+
+.password-policy {
+    width: 55%;
 }

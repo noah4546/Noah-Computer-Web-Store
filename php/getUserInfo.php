@@ -1,0 +1,77 @@
+<?php
+
+session_start();
+
+include_once "connect.php";
+
+$error = "";
+
+$username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
+
+$paramsok = true;
+if ($username === null || empty($username)) {
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    } else {
+        $paramsok = false;
+    }
+}
+
+if ($paramsok) {
+
+    $command = "SELECT `user`.`id`, `user`.`username`, `user`.`email`, `user`.`active`, 
+                `user`.`admin`, `user`.`create`, `address`.`street_address`, 
+                `address`.`city`, `address`.`province`, `address`.`postal`
+                FROM `user`
+                LEFT JOIN `address`
+                ON `user`.`id` = `address`.`user_id`
+                WHERE `user`.`username`=?";
+    $stmt = $dbh->prepare($command);
+    $params = [$username];
+    $success = $stmt->execute($params);
+    
+    if ($success) {
+        if ($stmt->rowCount() == 1) {
+
+            $row = $stmt->fetch();
+
+            $address = [
+                "street_address" => $row['street_address'],
+                "city" => $row['city'],
+                "province" => $row['province'],
+                "postal" => $row['postal']
+            ];
+
+            $user = [
+                "id" => $row['id'],
+                "username" => $username,
+                "email" => $row['email'],
+                "active" => $row['active'],
+                "admin" => $row['admin'],
+                "created" => $row['create'],
+                "address" => $address
+            ];
+
+            $json = [
+                "success" => "true",
+                "user" => $user
+            ];
+
+        } else {
+            $error = "no user found on database";
+        }
+    } else {
+        $error = "unable to connect to server";
+    }
+} else {
+    $error = "unable to connect to server";
+}
+
+if (!empty($error)) {
+    $json = [
+        "success" => "false",
+        "error" => $error
+    ];
+}
+
+echo json_encode($json);

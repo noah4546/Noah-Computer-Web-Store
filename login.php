@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $id = $row["id"];
                 $username = $row["username"];
+                $admin = $row["admin"];
                 $hashed_password = $row["password"];
 
                 if (password_verify($password, $hashed_password)) {
@@ -60,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['loggedin'] = true;
                     $_SESSION['id'] = $id;
                     $_SESSION['username'] = $username;
+                    $_SESSION["admin"] = $admin;   
 
                     header("Location: index.php");
                 } else {
@@ -93,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <main>
             <form action="login.php" method="POST">
 
-                <h1>Noah Computers</h1>
+                <a href="index.php"><img src="images/logo.png" /></a>
                 <h2>Sign In</h2>
 
                 <input type="text" name="username" placeholder="Username" required/>

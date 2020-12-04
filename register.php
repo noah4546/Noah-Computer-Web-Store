@@ -16,6 +16,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
 }
 
 require_once "php/connect.php";
+require "php/verify.php";
 
 $email_err = "";
 $username_err = "";
@@ -30,43 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     $confirm_password = filter_input(INPUT_POST, "confirm_password", FILTER_SANITIZE_STRING);
 
-    if ($email === null || empty($email)) {
-        $email_err = "Please enter username.";
-    }
-    if ($username === null || empty($username)) {
-        $username_err = "Please enter username.";
-    }
-    if ($password === null || empty($password)) {
-        $password_err = "Please enter password.";
-    }
-    if ($confirm_password === null || empty($confirm_password)) {
-        $confirm_password_err = "Please confirm password.";
-    }
-
-    if (strlen($username) < 6 || strlen($username) > 50) {
-        $username_err = "Username must be 6~30 Chars";
-    }
-
-    if ($password != $confirm_password) {
-        $confirm_password_err = "Passwords do not match.";
-    }
-
-    $containsUppercase = preg_match('/[A-Z]/', $password);
-    $containsLowercase = preg_match('/[a-z]/', $password);
-    $containsDigit = preg_match('/\d/', $password);
-    $containsSpecial = preg_match('/[^a-zA-z\d]/',$password);
-    $containsAll = $containsUppercase && $containsLowercase && $containsDigit && $containsSpecial;
-
-    if (!$containsAll) {
-        $confirm_password_err = "Password does not contain all of the rules";
-    }
-
-    if (strlen($password) < 8 || strlen($password) > 30) {
-        $confirm_password_err = "Password must be 6~30 Chars";
-    }
+    $verify = verifyEmail($email) && verifyUsername($username) && verifyPasswords($password, $confirm_password);
 
     // Validate login
-    if (empty($email_err) && empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+    if ($verify) {
 
         $command = "SELECT * FROM `user` WHERE `username`=?";
         $stmt = $dbh->prepare($command);
@@ -108,10 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                             $row = $stmt->fetch();
                             $id = $row['id'];
+                            $admin = $row['admin'];
 
                             $_SESSION['loggedin'] = true;
                             $_SESSION['id'] = $id;
                             $_SESSION['username'] = $username;
+                            $_SESSION["admin"] = $admin;   
 
                             header("Location: index.php");
                         } else {
@@ -140,36 +110,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel='stylesheet' href='css/global.css'>
         <link rel='stylesheet' href='css/login.css'>
         
-        <script src='js/main.js'></script>
+        <script src='js/register.js'></script>
     </head>
     <body>
         <main>
-            <form action="register.php" method="POST">
+            <form id="register_form" action="register.php" method="POST">
 
-                <h1>Noah Computers</h1>
+                <a href="index.php"><img src="images/logo.png" /></a>
                 <h2>Sign Up</h2>
 
-                <input type="email" name="email" placeholder="Email Adrress" required/>
+                <input type="email" name="email" id="email" placeholder="Email Adrress" required/>
                 <span class="error"><?php echo $email_err ?></span>
-                <input type="text" name="username" placeholder="Username" maxlength="30" minlength="6" required/>
+                <input type="text" name="username" id="username" placeholder="Username" maxlength="30" minlength="6" required/>
                 <span class="error"><?php echo $username_err ?></span>
-                <input type="password" name="password" placeholder="Password" maxlength="30" minlength="8" required/>
+                <input type="password" name="password" id="password" placeholder="Password" maxlength="30" minlength="8" required/>
                 <span class="error"><?php echo $password_err ?></span>
-                <input type="password" name="confirm_password" placeholder="Comfirm Password" maxlength="30" minlength="8"  required/>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Comfirm Password" maxlength="30" minlength="8"  required/>
                 <span class="error"><?php echo $confirm_password_err ?></span>
+                <span class="error" id="error"></span>
 
                 <div class="password-policy">
                     <div class="password-policy-rule"><p>Include the following:</p></div>
                     <div class="password-policy-rule"><p>Must contain:</p></div>
                     <div class="password-policy-rule">
                         <ul>
-                            <li>ABC</li>
-                            <li>abc</li>
-                            <li>123</li>
-                            <li>@#$</li>
+                            <li id="password_uppercase">ABC</li>
+                            <li id="password_lowercase">abc</li>
+                            <li id="password_numbers">123</li>
                         </ul>
                     </div>
-                    <div class="password-policy-rule"><p>8~30 Chars</p></div>
+                    <div class="password-policy-rule"><p id="password_length">8~30 Chars</p></div>
                 </div>
 
                 <input type="submit" value="SIGN UP" />

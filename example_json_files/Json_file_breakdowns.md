@@ -1,5 +1,6 @@
 ### JSON Layout from getUserInfo.php
 
+    success
     user
         id
         username
@@ -29,3 +30,20 @@
                 price
                 discount
                 quantity
+
+### JSON Layout for getProduct.php
+
+    success
+    product
+        id
+        name
+        description
+        price
+        discount
+        quantity
+        status
+        created
+        updated
+        catagory
+            name
+            description

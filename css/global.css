@@ -10,3 +10,30 @@ ul {
 a {
     text-decoration: none;
 }
+
+.error {
+    color: red;
+    font-size: 1.5em;
+}
+
+.password-policy {
+    margin-bottom: 10px;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-row-gap: 5px;
+    float: left;
+    clear: left;
+    font-weight: 100;
+}
+
+.password-policy-rule {
+    text-align: center;
+}
+
+.password-policy-rule li {
+    display: inline;
+    margin: 10px;
+}
