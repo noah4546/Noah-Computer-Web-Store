@@ -1,0 +1,17 @@
+.product-header, .product-item {
+    display: grid;
+    grid-template-columns: 10% 40% 10% 10% 10% 10% 10%;
+    font-size: 1.2em;
+    border-bottom: 1px solid black;
+    padding: 3px;
+}
+
+.product-header {
+    font-weight: 900;
+}
+
+#query {
+    font-size: 1.3em;
+    margin: 20px 0;
+    width: 60%;
+}

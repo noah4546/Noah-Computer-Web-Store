@@ -53,6 +53,7 @@ CREATE TABLE `product` (
     `discount` FLOAT default 0,
     `quantity` int(11) default 0,
     `status` varchar(20) default 'available',
+    `image_url` varchar(255) NULL,
     `created` timestamp default CURRENT_TIMESTAMP
 );
 

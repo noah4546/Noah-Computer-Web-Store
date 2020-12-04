@@ -1,0 +1,20 @@
+h2 {
+    margin-bottom: 20px;
+}
+
+#product_form input {
+    float: left;
+    clear: left;
+    margin-bottom: 20px;
+} 
+
+#product_form label {
+    float: left;
+    clear: left;
+    margin-bottom: 3px;
+}
+
+textarea {
+    float: left;
+    clear: left;
+}

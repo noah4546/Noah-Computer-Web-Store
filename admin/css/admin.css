@@ -1,0 +1,29 @@
+main {
+    display: grid;
+    grid-template-columns: 10% auto;
+}
+
+.menu {
+    border-right: 2px solid lightgray;
+}
+
+.menu ul {
+    margin-top: 30px;
+}
+
+.menu li {
+    padding-left: 20px;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin: 50px 5%;
+}
+
+table, tr, td, th {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+

@@ -83,7 +83,7 @@ $admin = $_SESSION['admin'];
                 </div>
                 <?php if($admin == 1) { ?>
                     <div>
-                        <h2><a href="admin.php">Admin</a></h2>
+                        <h2><a href="admin">Admin</a></h2>
                     </div>
                 <?php } ?>
             </div>
