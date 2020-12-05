@@ -1,7 +1,7 @@
 .user-options {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    margin: 30px 20%;
+    margin: 30px 0;
 }
 
 .user-options div {
@@ -23,10 +23,6 @@
     float: left;
     clear: left;
     font-size: 1em;
-}
-
-.user-info {
-    margin: 0 15%;
 }
 
 .user-info table {
@@ -79,4 +75,23 @@
 
 .password-policy {
     width: 55%;
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  
+    main {
+        width: 100%;
+    }
+
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 769px) {
+
+    main {
+        width: 80%;
+        margin: 0 10%;
+    }
+
 }

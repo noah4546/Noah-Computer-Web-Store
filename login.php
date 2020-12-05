@@ -58,15 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     session_start();
 
+                    
+
                     $_SESSION['loggedin'] = true;
                     $_SESSION['id'] = $id;
                     $_SESSION['username'] = $username;
                     $_SESSION["admin"] = $admin;   
 
-                    header("Location: index.php");
+                    if(isset($_SESSION['lookingAt'])) {
+                        header("Location: product.php?product=" . $_SESSION['lookingAt']);
+                    } else {
+                        header("Location: index.php");
+                    }
                 } else {
                     $password_err = "Password is invalid";
-                    session_destroy();
                 }
             } else {
                 $username_err = "No user found with that username.";

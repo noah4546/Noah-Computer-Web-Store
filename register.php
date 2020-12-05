@@ -83,7 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION['username'] = $username;
                             $_SESSION["admin"] = $admin;   
 
-                            header("Location: index.php");
+                            if(isset($_SESSION['lookingAt'])) {
+                                header("Location: product.php?product=" . $_SESSION['lookingAt']);
+                            } else {
+                                header("Location: index.php");
+                            }
                         } else {
                             $confirm_password_err = "Something went wrong. Please try again later.";
                         }

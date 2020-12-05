@@ -1,9 +1,4 @@
 /* login */
-form {
-    width: 30%;
-    margin: 80px 35%;
-}
-
 h1, h2, h3 {
     text-align: center;
     margin-bottom: 20px;
@@ -36,4 +31,34 @@ form input[type=submit] {
 .password-policy {
     font-size: 1.2em;
     width: 96%;
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  
+    form {
+        width: 90%;
+        margin: 80px 5%;
+    }
+
+}
+
+/* Medium Screems */
+@media screen and (min-width: 769px) and (max-width: 1300px) {
+
+    form {
+        width: 50%;
+        margin: 80px 25%;
+    }
+
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 1301px) {
+
+    form {
+        width: 30%;
+        margin: 80px 35%;
+    }
+
 }

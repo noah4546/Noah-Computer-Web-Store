@@ -10,18 +10,22 @@
  */
 session_start();
 
-if (!isset($_SESSION['loggedin'])) {
-    $_SESSION['loggedin'] = false;
+require_once 'php/connect.php';
+
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username']) || !isset($_SESSION['admin'])) {
+    session_destroy();
+    header("Location: login.php");
 } 
 
-$product_id = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
-
-if ($product_id === null || empty($product_id)) {
-    $product_id = "";
-    header("Location: index.php");
+$cart_error = "";
+if (isset($_SESSION['cart_error'])) {
+    $cart_error = $_SESSION['cart_error'];
+    unset($_SESSION['cart_error']);
 }
 
 $loggedin = $_SESSION['loggedin'];
+$id = $_SESSION['id'];
+$admin = $_SESSION['admin'];
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -31,10 +35,11 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/product.css">
+        <link rel="stylesheet" href="css/user.css">
         
         <script src="js/main.js"></script>
-        <script src="js/product.js"></script>
+        <script src="js/user.js"></script>
+        <script src="js/editUser.js"></script>
     </head>
     <body>
         <header>
@@ -66,26 +71,7 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-            <div id="product_id" style="display: none;"><?php echo $product_id; ?></div>
-            <div class="product-page">
-                <div id="product_image">
-                    
-                </div>
-                <div class="product-info">
-                    <div id="product_name"></div>
-                    <div id="product_price" class="price"></div>
-                    <div id="short_description"></div>
-                </div>
-                <div id="product_buy">
-
-                </div>
-                <div id="long_description_box">
-                    <h2>Product Desctription</h2>
-                    <div id="long_description">
-
-                    </div>
-                </div>
-            </div>
+            
         </main>
         <footer>
         
