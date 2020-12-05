@@ -10,7 +10,8 @@ $error = "";
 if ($query === null || empty($query)) {
 
     $command = "SELECT `product`.`id`, `product_category`.`name` as 'category',
-        `product`.`name`, `price`, `discount`, `quantity`, `status`
+        `product`.`name`, `price`, `discount`, `quantity`, `status`, `image_url`,
+        `short_description`, `long_description`
         FROM `product`
         JOIN `product_category`
         ON `product_category`.`id` = `product`.`category_id`
@@ -31,7 +32,10 @@ if ($query === null || empty($query)) {
                 "price" => $row['price'],
                 "discount" => $row['discount'],
                 "quantity" => $row['quantity'],
-                "status" => $row['status']
+                "status" => $row['status'],
+                "image" => $row['image_url'],
+                "short_description" => $row['short_description'],
+                "long_description" => $row['long_description']
             ];
 
             array_push($products, $product);
@@ -48,7 +52,8 @@ if ($query === null || empty($query)) {
 } else {
 
     $command = "SELECT `product`.`id`, `product_category`.`name` as 'category',
-        `product`.`name`, `price`, `discount`, `quantity`, `status`
+        `product`.`name`, `price`, `discount`, `quantity`, `status`, `image_url`,
+        `short_description`, `long_description`
         FROM `product`
         JOIN `product_category`
         ON `product_category`.`id` = `product`.`category_id`
@@ -72,7 +77,10 @@ if ($query === null || empty($query)) {
                     "price" => $row['price'],
                     "discount" => $row['discount'],
                     "quantity" => $row['quantity'],
-                    "status" => $row['status']
+                    "status" => $row['status'],
+                    "image" => $row['image_url'],
+                    "short_description" => $row['short_description'],
+                    "long_description" => $row['long_description']
                 ];
     
                 array_push($products, $product);

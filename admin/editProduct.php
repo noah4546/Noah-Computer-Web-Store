@@ -61,9 +61,9 @@ if ($product_id === null || empty($product_id)) {
                 <a href="../index.php"><img class="logo" src="../images/logo.png" /></a>
             </div>
             <div class="header-search">
-                <form>
-                    <input type="search" id="search" placeholder="Keywords or Item #"/>
-                    <input type="image" src="../images/search.png" />
+            <form action="../search.php" method="GET">
+                    <input type="search" name="search" id="search" placeholder="Search All Products"/>
+                    <input type="image" src="images/search.png" />
                 </form>
             </div>
             <div>

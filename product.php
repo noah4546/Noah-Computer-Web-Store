@@ -14,6 +14,13 @@ if (!isset($_SESSION['loggedin'])) {
     $_SESSION['loggedin'] = false;
 } 
 
+$product_id = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
+
+if ($product_id === null || empty($product_id)) {
+    $product_id = "";
+    header("Location: index.php");
+}
+
 $loggedin = $_SESSION['loggedin'];
 ?><!DOCTYPE html>
 <html lang='en'>
@@ -24,8 +31,10 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/product.css">
         
         <script src="js/main.js"></script>
+        <script src="js/product.js"></script>
     </head>
     <body>
         <header>
@@ -57,7 +66,23 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-        
+            <div id="product_id" style="display: none;"><?php echo $product_id; ?></div>
+            <div class="product-page">
+                <div id="product_image">
+                    
+                </div>
+                <div class="product-info">
+                    <div id="product_name"></div>
+                    <div id="product_price"></div>
+                    <div id="short_description"></div>
+                </div>
+                <div id="product_buy">
+
+                </div>
+                <div id="long_description">
+
+                </div>
+            </div>
         </main>
         <footer>
         

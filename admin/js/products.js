@@ -31,6 +31,7 @@ window.addEventListener("load", function() {
                 <a href="editProduct.php?product=${json.products[i].id}">
                 <div class="product-item">
                     <div>${json.products[i].id}</div>
+                    <div><img src="../images/products/${json.products[i].image}"></div>
                     <div>${json.products[i].name}</div>
                     <div>${json.products[i].category}</div>
                     <div>$${json.products[i].price}</div>

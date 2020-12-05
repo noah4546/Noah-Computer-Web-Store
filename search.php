@@ -14,6 +14,12 @@ if (!isset($_SESSION['loggedin'])) {
     $_SESSION['loggedin'] = false;
 } 
 
+$search = filter_input(INPUT_GET, "search", FILTER_SANITIZE_STRING);
+
+if ($search === null || empty($search)) {
+    $search = "";
+}
+
 $loggedin = $_SESSION['loggedin'];
 ?><!DOCTYPE html>
 <html lang='en'>
@@ -24,8 +30,10 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/search.css">
         
         <script src="js/main.js"></script>
+        <script src="js/search.js"></script>
     </head>
     <body>
         <header>
@@ -34,7 +42,7 @@ $loggedin = $_SESSION['loggedin'];
             </div>
             <div class="header-search">
                 <form action="search.php" method="GET">
-                    <input type="search" name="search" id="search" placeholder="Search All Products"/>
+                    <input type="search" name="search" id="search" value="<?php echo $search ?>"/>
                     <input type="image" src="images/search.png" />
                 </form>
             </div>
@@ -57,7 +65,9 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-        
+            <div id="products">
+                
+            </div>
         </main>
         <footer>
         

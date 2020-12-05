@@ -53,9 +53,9 @@ if ($admin != "1") {
                 <a href="../index.php"><img class="logo" src="../images/logo.png" /></a>
             </div>
             <div class="header-search">
-                <form>
-                    <input type="search" id="search" placeholder="Keywords or Item #"/>
-                    <input type="image" src="../images/search.png" />
+                <form action="../search.php" method="GET">
+                    <input type="search" name="search" id="search" placeholder="Search All Products"/>
+                    <input type="image" src="images/search.png" />
                 </form>
             </div>
             <div>
@@ -88,8 +88,10 @@ if ($admin != "1") {
             <div class="content">
                 <h2>Products</h2>
                 <input type="text" id="query" placeholder="Filter products"/>
+                <a href="editProduct.php?product=-1"><div class="addProduct">Add new Product</div></a>
                 <div class="product-header">
-                    <div>Product id</div>
+                    <div>Id</div>
+                    <div>Image</div>
                     <div>Name</div>
                     <div>Category</div>
                     <div>Price</div>

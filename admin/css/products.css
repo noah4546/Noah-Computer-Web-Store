@@ -1,6 +1,6 @@
 .product-header, .product-item {
     display: grid;
-    grid-template-columns: 10% 40% 10% 10% 10% 10% 10%;
+    grid-template-columns: 3% 10% 37% 10% 10% 10% 10% 10%;
     font-size: 1.2em;
     border-bottom: 1px solid black;
     padding: 3px;
@@ -14,4 +14,18 @@
     font-size: 1.3em;
     margin: 20px 0;
     width: 60%;
+}
+
+.addProduct {
+    font-size: 1.3em;
+    padding: 3px;
+    float: right;
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: whitesmoke;
+}
+
+.product-item img{
+    width: 100%;
 }

@@ -40,25 +40,27 @@ CREATE TABLE `product_category` (
     `description` varchar(512) NULL
 );
 
-INSERT INTO `product_category` (`name`)
-VALUES ('graphics cards');
+INSERT INTO `product_category` (`name`) VALUES 
+    ('uncategoried'),
+    ('graphics cards');
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
     `id` int(11) NOT NULL auto_increment primary key,
-    `category_id` int(11) NOT NULL REFERENCES `product_category`(`id`),
+    `category_id` int(11) NOT NULL  default 1 REFERENCES `product_category`(`id`),
     `name` varchar(255) NOT NULL,
-    `description` varchar(5000) NULL,
+    `short_description` varchar(2048) NULL,
+    `long_description` varchar(65535) NULL,
     `price` FLOAT NOT NULL,
     `discount` FLOAT default 0,
     `quantity` int(11) default 0,
     `status` varchar(20) default 'available',
-    `image_url` varchar(255) NULL,
+    `image_url` varchar(255) NULL default 'product0.jpg',
     `created` timestamp default CURRENT_TIMESTAMP
 );
 
 INSERT INTO `product` (`category_id`, `name`, `price`, `quantity`) VALUES
-    (1, 'RTX 3090', 1499.00, 10),
-    (1, 'RTX 3080', 699.00, 25),
-    (1, 'RTX 3070', 499.00, 200),
-    (1, 'RTX 3060 Ti', 399.00, 2500);
+    (2, 'RTX 3090', 1499.00, 10),
+    (2, 'RTX 3080', 699.00, 25),
+    (2, 'RTX 3070', 499.00, 200),
+    (2, 'RTX 3060 Ti', 399.00, 2500);

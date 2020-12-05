@@ -1,0 +1,9 @@
+.product-page {
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+}
+
+#product_image img{
+    width: 90%;
+    margin: 5%;
+}

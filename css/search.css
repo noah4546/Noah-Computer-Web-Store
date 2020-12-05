@@ -1,0 +1,32 @@
+#products {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-gap: 20px;
+    margin: 0 15%;
+}
+
+.product-item {
+    border: 1px solid black;
+    margin: 20px;
+    width: 200px;
+    height: 300px;
+}
+
+.product-image {
+    grid-column: span 2;
+    height: 175px;
+    margin-bottom: 15px;
+}
+
+.product-image img {
+    width: 90%;
+    padding: 5%;
+}
+
+.product-name, .product-price {
+    padding: 10px;
+}
+
+.product-price {
+    font-size: 1.2em;
+}
