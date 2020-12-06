@@ -2,14 +2,14 @@
 
 session_start();
 
-include_once 'connect.php';
+include_once '../connect.php';
 
 $product_id = filter_input(INPUT_POST, "product", FILTER_VALIDATE_INT);
 $quantity = filter_input(INPUT_POST, "quantity", FILTER_VALIDATE_INT);
 
 if(!isset($_SESSION['id'])) {
     $_SESSION['lookingAt'] = $product_id;
-    header("Location: ../login.php");
+    header("Location: ../../login.php");
     die();
 }
 $id = $_SESSION['id'];
@@ -47,8 +47,8 @@ if ($paramsok) {
         $_SESSION['cart_error'] = "Unable to find product in database";
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     die();
 }
 
-header("Location: ../cart.php");
+header("Location: ../../cart.php");

@@ -71,15 +71,3 @@
     font-size: 1.2em;
     padding: 3px;
 }
-
-.instock {
-    color: green;
-}
-
-.lowstock {
-    color: darkorange;
-}
-
-.outstock {
-    color: red;
-}

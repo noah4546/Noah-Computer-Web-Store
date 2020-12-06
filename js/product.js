@@ -59,7 +59,7 @@ window.addEventListener("load", function() {
                 <div class="price">${price}</div>
                 <div id="product_buy_stock">${stock}</div>
                 <div class="product-form">
-                    <form action="php/addToCart.php" method="POST">
+                    <form action="php/cart/addToCart.php" method="POST">
                         <input type="hidden" name="product" value="${json.product.id}">
                         <label for="cart_quantity">Quantity:</label>
                         <select name="quantity" id="cart_quantity">

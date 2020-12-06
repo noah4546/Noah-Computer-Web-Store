@@ -12,7 +12,7 @@ session_start();
 
 require_once 'php/connect.php';
 
-if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username']) || !isset($_SESSION['admin'])) {
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username'])) {
     session_destroy();
     header("Location: login.php");
 } 
@@ -25,7 +25,6 @@ if (isset($_SESSION['cart_error'])) {
 
 $loggedin = $_SESSION['loggedin'];
 $id = $_SESSION['id'];
-$admin = $_SESSION['admin'];
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -35,11 +34,10 @@ $admin = $_SESSION['admin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/user.css">
+        <link rel="stylesheet" href="css/cart.css">
         
         <script src="js/main.js"></script>
-        <script src="js/user.js"></script>
-        <script src="js/editUser.js"></script>
+        <script src="js/cart.js"></script>
     </head>
     <body>
         <header>
@@ -71,7 +69,20 @@ $admin = $_SESSION['admin'];
             </div>
         </header>
         <main>
-            
+            <div class="cart">
+                <h2>Shopping Cart</h2>
+                <div id="cart_header">Price</div>
+                <div id="cart">
+                </div>
+                <div id="cart_total">
+
+                </div>
+            </div>
+            <div class="checkout">
+                <form action="checkout.php">
+                    <input type="submit" value="Proceed to Checkout">
+                </form>
+            </div>
         </main>
         <footer>
         

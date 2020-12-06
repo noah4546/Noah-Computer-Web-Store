@@ -18,6 +18,7 @@ $command = "SELECT `product`.`id`, `product_category`.`name` as 'category',
 $stmt = $dbh->prepare($command);
 $success = $stmt->execute();
 
+$json = [];
 $products = [];
 if ($success) { 
     while($row = $stmt->fetch()) {
@@ -42,6 +43,7 @@ if ($success) {
             "count" => $stmt->rowCount(),
             "products" => $products
         ];
+
     }
 } else {
     $json = [

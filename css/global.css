@@ -37,3 +37,15 @@ a {
     display: inline;
     margin: 10px;
 }
+
+.instock {
+    color: green;
+}
+
+.lowstock {
+    color: darkorange;
+}
+
+.outstock {
+    color: red;
+}

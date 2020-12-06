@@ -12,6 +12,19 @@ try {
         "000790079",
         "20010801"
     );
+
+    /**
+     * To make sure the encoding is set to utf8 by default
+     * this command is ran, in versions proir to PHP 5.3.6
+     * this is broken and you must manualy set it.
+     * 
+     * This only becomes an issue for me because I am storing
+     * raw html on the database in the manner of product pages,
+     * on the product pages they allow for an adminastator to 
+     * create there own descrtipion in any fasion they would like
+     * using their own custom html.
+     */
+    $dbh->exec("set names utf8");
 } catch (Exception $e) {
     die("ERROR: Couldn't connect. {$e->getMessage()}");
 }
