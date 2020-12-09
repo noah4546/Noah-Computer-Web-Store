@@ -12,6 +12,7 @@ session_start();
 
 include_once '../connect.php';
 
+$full_name = filter_input(INPUT_POST, "full_name", FILTER_SANITIZE_STRING);
 $street_address = filter_input(INPUT_POST, "street_address", FILTER_SANITIZE_STRING);
 $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING);
 $province = filter_input(INPUT_POST, "province", FILTER_SANITIZE_STRING);
@@ -19,6 +20,9 @@ $postal = filter_input(INPUT_POST, "postal", FILTER_SANITIZE_STRING);
 
 $error = "";
 
+if ($full_name === null || empty($full_name)) {
+    $error = "full name is empty";
+}
 if ($street_address === null || empty($street_address)) {
     $error = "street address is empty";
 }
@@ -43,10 +47,10 @@ if (empty($error)) {
         if ($stmt->rowCount() == 0) {
     
             $command = "INSERT INTO `address` 
-                        (`user_id`, `street_address`, `city`, `province`, `postal`) 
-                        VALUES (?,?,?,?,?)";
+                        (`user_id`, `street_address`, `city`, `province`, `postal`, `name`) 
+                        VALUES (?,?,?,?,?,?)";
             $stmt = $dbh->prepare($command);
-            $params = [$_SESSION['id'], $street_address, $city, $province, $postal];
+            $params = [$_SESSION['id'], $street_address, $city, $province, $postal, $full_name];
             $success = $stmt->execute($params);
     
             if (!$success) {
@@ -55,10 +59,10 @@ if (empty($error)) {
         } else {
             
             $command = "UPDATE `address` 
-                        SET `street_address`=?,`city`=?,`province`=?,`postal`=? 
+                        SET `street_address`=?,`city`=?,`province`=?,`postal`=?, `name`=?
                         WHERE `user_id`=?";
             $stmt = $dbh->prepare($command);
-            $params = [$street_address, $city, $province, $postal, $_SESSION['id']];
+            $params = [$street_address, $city, $province, $postal, $full_name, $_SESSION['id']];
             $success = $stmt->execute($params);
     
             if (!$success) {

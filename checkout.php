@@ -10,18 +10,27 @@
  */
 session_start();
 
-if (!isset($_SESSION['loggedin'])) {
-    $_SESSION['loggedin'] = false;
+require_once 'php/connect.php';
+
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username'])) {
+    session_destroy();
+    header("Location: login.php");
 } 
 
-$product_id = filter_input(INPUT_GET, "product", FILTER_SANITIZE_STRING);
+$cart_error = "";
+if (isset($_SESSION['cart_error'])) {
+    $cart_error = $_SESSION['cart_error'];
+    unset($_SESSION['cart_error']);
+}
 
-if ($product_id === null || empty($product_id)) {
-    $product_id = "";
-    header("Location: index.php");
+$cart_success = "";
+if (isset($_SESSION['cart_success'])) {
+    $cart_success = $_SESSION['cart_success'];
+    unset($_SESSION['cart_success']);
 }
 
 $loggedin = $_SESSION['loggedin'];
+$id = $_SESSION['id'];
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -31,11 +40,11 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
-        <link rel="stylesheet" href="css/product.css">
+        <link rel="stylesheet" href="css/checkout.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
-        <script src="js/product.js"></script>
+        <script src="js/checkout.js"></script>
     </head>
     <body>
         <header>
@@ -67,23 +76,35 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-            <div id="product_id" style="display: none;"><?php echo $product_id; ?></div>
-            <div class="product-page">
-                <div id="product_image">
-                    
+            <div class="lhs">
+                <h2>Review your order</h2>
+                <div class="shipping-and-payment">
+                    <div>
+                        <h3>Shipping address <a href="user.php" class="change">Change</a></h3>
+                        <div id="address">
+                            <p>No address set</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Payment method</h3>
+                        <p>VISA ending in 1234</p>
+                    </div>
                 </div>
-                <div class="product-info">
-                    <div id="product_name"></div>
-                    <div id="product_price" class="price"></div>
-                    <div id="short_description"></div>
+                <div id="products">
+                    No Products in cart
                 </div>
-                <div id="product_buy">
+            </div>
+            <div class="rhs">
+                <div class="place-order">
+                    <form action="placeorder.php" method="POST">
+                        <input type="submit" id="place_order_button" value="Place your order" disabled>
+                    </form>
+                    <h4>Order Summary</h4>
+                    <div id="order_summary">
 
-                </div>
-                <div id="long_description_box">
-                    <h2>Product Desctription</h2>
-                    <div id="long_description">
-
+                    </div>
+                    <div id="total">
+                        
                     </div>
                 </div>
             </div>

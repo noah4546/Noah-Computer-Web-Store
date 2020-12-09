@@ -25,6 +25,7 @@ $loggedin = $_SESSION['loggedin'];
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
     </head>
     <body>

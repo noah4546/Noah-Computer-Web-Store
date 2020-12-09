@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+$(document).ready(function() {
 
     let cart = document.getElementById("cart");
     let cart_total = document.getElementById("cart_total");
@@ -35,15 +35,15 @@ window.addEventListener("load", function() {
                         <div class="cart-item-stock">${stock}</div>
                         <div class="cart-item-options">
                             <div class="cart-item-quantity">
-                                <form action="cart/updateQuantity.php" method="POST">
+                                <form action="php/cart/updateQuantity.php" method="POST">
                                     <input type="hidden" name="product" value="${json.products[i].id}">
                                     <label for="quantity_${json.products[i].id}">Quantity:</label>
-                                    <input type="number" name="quantity" id="quantity_${json.products[i].id}" min="0" max="${json.products[i].stock}" value="${json.products[i].quantity}">
+                                    <input type="number" name="quantity" id="quantity_${json.products[i].id}" min="1" max="${json.products[i].stock}" value="${json.products[i].quantity}">
                                     <input type="submit" value="Update">
                                 </form>
                             </div>
                             <div class="cart-item-delete">
-                                <form action="cart/deleteItem.php" method="POST">
+                                <form action="php/cart/deleteItem.php" method="POST" class="delete-form">
                                     <input type="hidden" name="product" value="${json.products[i].id}">
                                     <input type="submit" value="Delete">
                                 </form>

@@ -25,6 +25,7 @@ VALUES ('noah4546', '$2y$10$hoXaS3Jn85fGgLzQ4Jk2bO8ESD5HARtBY51T6T1BZymBUVsumHF6
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
     `id` int(11) NOT NULL auto_increment primary key,
+    `name` varchar(50) NOT NULL,
     `user_id` int(11) NOT NULL REFERENCES `user`(`id`),
     `street_address` varchar(255) NOT NULL,
     `city` varchar(255) NOT NULL,

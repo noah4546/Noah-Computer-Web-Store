@@ -37,6 +37,7 @@ $admin = $_SESSION['admin'];
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/user.css">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/user.js"></script>
         <script src="js/editUser.js"></script>
@@ -98,7 +99,7 @@ $admin = $_SESSION['admin'];
                             <td>Username</td>
                             <td>
                                 <div id="current_username"></div>
-                                <form action="php/edit/updateUsername.php" method="POST" id="form_username" style="display: none">
+                                <form action="php/edit/updateUsername.php" method="POST" class="edit-form" id="form_username" style="display: none">
                                     <label for="username">New username: </label>
                                     <input type="text" name="username" id="username" required/>
                                     <input type="submit" value="Update" />
@@ -160,6 +161,8 @@ $admin = $_SESSION['admin'];
                             <td>
                                 <div id="current_address"></div>
                                 <form action="php/edit/updateAddress.php" method="POST" id="form_address" style="display: none">
+                                    <label for="full_name">Full Name: </label>
+                                    <input type="text" name="full_name" id="full_name" required/>
                                     <label for="street_address">Street address: </label>
                                     <input type="text" name="street_address" id="street_address" required/>
                                     <label for="city">City: </label>

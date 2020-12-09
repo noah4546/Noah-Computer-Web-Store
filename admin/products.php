@@ -44,6 +44,7 @@ if ($admin != "1") {
         <link rel="stylesheet" href="css/admin.css">
         <link rel="stylesheet" href="css/products.css">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../js/main.js"></script>
         <script src="js/products.js"></script>
     </head>

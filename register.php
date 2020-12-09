@@ -114,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel='stylesheet' href='css/global.css'>
         <link rel='stylesheet' href='css/login.css'>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src='js/register.js'></script>
     </head>
     <body>

@@ -23,6 +23,12 @@ if (isset($_SESSION['cart_error'])) {
     unset($_SESSION['cart_error']);
 }
 
+$cart_success = "";
+if (isset($_SESSION['cart_success'])) {
+    $cart_success = $_SESSION['cart_success'];
+    unset($_SESSION['cart_success']);
+}
+
 $loggedin = $_SESSION['loggedin'];
 $id = $_SESSION['id'];
 ?><!DOCTYPE html>
@@ -36,6 +42,7 @@ $id = $_SESSION['id'];
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/cart.css">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/cart.js"></script>
     </head>
@@ -71,6 +78,8 @@ $id = $_SESSION['id'];
         <main>
             <div class="cart">
                 <h2>Shopping Cart</h2>
+                <div class="error"><?php echo $cart_error ?></div>
+                <div><?php echo $cart_success ?></div>
                 <div id="cart_header">Price</div>
                 <div id="cart">
                 </div>
@@ -78,10 +87,12 @@ $id = $_SESSION['id'];
 
                 </div>
             </div>
-            <div class="checkout">
-                <form action="checkout.php">
-                    <input type="submit" value="Proceed to Checkout">
-                </form>
+            <div class="rhs">
+                <div class="checkout">
+                    <form action="checkout.php" method="POST">
+                        <input type="submit" value="Proceed to Checkout">
+                    </form>
+                </div>
             </div>
         </main>
         <footer>

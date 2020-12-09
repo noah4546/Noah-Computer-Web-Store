@@ -53,3 +53,17 @@ main {
     font-weight: 900;
     font-size: 1.1em;
 }
+
+.checkout {
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 70%;
+    margin: 50px 15%;
+    padding: 15px;
+}
+
+.checkout input {
+    width: 100%;
+    padding: 10px 3px;
+    font-size: 1.1em;
+}

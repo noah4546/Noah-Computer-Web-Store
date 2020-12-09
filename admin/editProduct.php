@@ -50,6 +50,7 @@ if ($product_id === null || empty($product_id)) {
         <link rel="stylesheet" href="css/admin.css">
         <link rel="stylesheet" href="css/editProduct.css">
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../js/main.js"></script>
         <?php if ($product_id != "-1") { ?>
         <script src="js/loadProduct.js"></script>

@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+$(document).ready(function() {
 
     let products_div = document.getElementById("products");
     let search = document.getElementById("search");

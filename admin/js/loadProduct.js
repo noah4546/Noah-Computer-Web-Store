@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+$(document).ready(function() {
 
     let product_id = document.getElementById("product_id");
 

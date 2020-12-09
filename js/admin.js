@@ -1,4 +1,4 @@
-window.addEventListener("load", function() {
+$(document).ready(function() {
 
     let category_table = document.getElementById("product_category_table");
     let product_table = document.getElementById("products_table");

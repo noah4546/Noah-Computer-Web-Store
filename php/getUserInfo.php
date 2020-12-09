@@ -6,22 +6,18 @@ include_once "connect.php";
 
 $error = "";
 
-$username = filter_input(INPUT_GET, "username", FILTER_SANITIZE_STRING);
-
 $paramsok = true;
-if ($username === null || empty($username)) {
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-    } else {
-        $paramsok = false;
-    }
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    $paramsok = false;
 }
 
 if ($paramsok) {
 
     $command = "SELECT `user`.`id`, `user`.`username`, `user`.`email`, `user`.`active`, 
                 `user`.`admin`, `user`.`create`, `address`.`street_address`, 
-                `address`.`city`, `address`.`province`, `address`.`postal`
+                `address`.`city`, `address`.`province`, `address`.`postal`, `address`.`name`
                 FROM `user`
                 LEFT JOIN `address`
                 ON `user`.`id` = `address`.`user_id`
@@ -36,6 +32,7 @@ if ($paramsok) {
             $row = $stmt->fetch();
 
             $address = [
+                "name" => $row['name'],
                 "street_address" => $row['street_address'],
                 "city" => $row['city'],
                 "province" => $row['province'],

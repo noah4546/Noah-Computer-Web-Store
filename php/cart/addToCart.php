@@ -34,12 +34,30 @@ if ($paramsok) {
         $price = $row['price'];
         $discount = $row['discount'];
 
-        $command = "INSERT INTO `cart` (`product_id`, `user_id`, `price`, `discount`, `quantity`)
-                    VALUES (?,?,?,?,?)";
+        $command = "SELECT * FROM `cart` WHERE `user_id`=? AND `product_id`=?";
         $stmt = $dbh->prepare($command);
-        $params = [$product_id, $id, $price, $discount, $quantity];
+        $params = [$id, $product_id];
         $success = $stmt->execute($params);
 
+        if ($success) {
+            $row = $stmt->fetch();
+            $current_quantity = $row['quantity'];
+
+            if ($stmt->rowCount() == 0) {
+                $command = "INSERT INTO `cart` (`product_id`, `user_id`, `price`, `discount`, `quantity`)
+                            VALUES (?,?,?,?,?)";
+                $stmt = $dbh->prepare($command);
+                $params = [$product_id, $id, $price, $discount, $quantity];
+                $success = $stmt->execute($params);
+            } else {
+                $command = "UPDATE `cart` 
+                            SET `price`=?, `discount`=?, `quantity`=?
+                            WHERE `user_id`=? AND `product_id`=?";
+                $stmt = $dbh->prepare($command);
+                $params = [$price, $discount, $quantity + $current_quantity, $id, $product_id];
+                $success = $stmt->execute($params);
+            }
+        }
         if (!$success) {
             $_SESSION['cart_error'] = "Unable add product to cart";
         }
