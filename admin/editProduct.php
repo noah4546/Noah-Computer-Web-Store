@@ -64,7 +64,7 @@ if ($product_id === null || empty($product_id)) {
             <div class="header-search">
             <form action="../search.php" method="GET">
                     <input type="search" name="search" id="search" placeholder="Search All Products"/>
-                    <input type="image" src="images/search.png" />
+                    <input type="image" src="../images/search.png" />
                 </form>
             </div>
             <div>
@@ -105,8 +105,11 @@ if ($product_id === null || empty($product_id)) {
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required/>
 
-                    <label for="description">Description</label>
-                    <textarea name="description" id="description" rows="10" cols="30"></textarea>
+                    <label for="short_description">Short Description (html)</label>
+                    <textarea name="short_description" id="short_description" rows="10" cols="30"></textarea>
+
+                    <label for="long_description">Long Description (html)</label>
+                    <textarea name="long_description" id="long_description" rows="10" cols="30"></textarea>
 
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image" />

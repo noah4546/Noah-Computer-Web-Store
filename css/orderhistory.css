@@ -1,0 +1,50 @@
+main {
+    margin: 30px 15%;
+}
+
+.order-header {
+    display: grid;
+    grid-template-columns: 30% 30% auto;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+.order-main {
+    border: 1px solid black;
+}
+
+.order {
+    margin-bottom: 30px;
+}
+
+.order-header-number {
+    text-align: right;
+}
+
+.order-status {
+    padding: 10px;
+    font-size: 1.8em;
+    font-weight: 900;
+}
+
+.order-item {
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+
+.order-item-image img {
+    width: 100%;
+}
+
+.order-item-info div {
+    margin-top: 10px;
+}
+
+.order-item-name {
+    font-size: 1.2em;
+}
+
+main h1 {
+    margin-bottom: 10px;
+}

@@ -80,7 +80,7 @@ $admin = $_SESSION['admin'];
                     <h2><a href="php/deleteuser.php">Delete user</a></h2>
                 </div>
                 <div>
-                    <h2><a href="order_history.php">Order History</a></h2>
+                    <h2><a href="orderhistory.php">Order History</a></h2>
                 </div>
                 <?php if($admin == 1) { ?>
                     <div>

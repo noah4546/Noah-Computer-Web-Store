@@ -79,3 +79,23 @@ CREATE TABLE `cart` (
     `discount` FLOAT default 0,
     `quantity` int(11) default 1
 );
+
+
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+    `id` int(11) NOT NULL auto_increment primary key,
+    `user_id` int(11) NOT NULL REFERENCES `user`(`id`),
+    `total` FLOAT NOT NULL,
+    `date` timestamp  default CURRENT_TIMESTAMP,
+    `status` varchar(20) default 'processing'
+);
+
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE `order_item` (
+    `id` int(11) NOT NULL auto_increment primary key,
+    `product_id` int(11) NOT NULL REFERENCES `product`(`id`),
+    `order_id` int(11) NOT NULL REFERENCES `order`(`id`),
+    `price` FLOAT NOT NULL,
+    `discount` FLOAT default 0,
+    `quantity` int(11) default 1
+)

@@ -14,7 +14,7 @@ require_once '../php/connect.php';
 
 if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username']) || !isset($_SESSION['admin'])) {
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: login.php");
 } 
 
 $error = "";
@@ -42,11 +42,11 @@ if ($admin != "1") {
         <link rel="stylesheet" href="../css/global.css">
         <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="css/admin.css">
-        <link rel="stylesheet" href="css/products.css">
+        <link rel="stylesheet" href="css/customers.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../js/main.js"></script>
-        <script src="js/products.js"></script>
+        <script src="js/customers.js"></script>
     </head>
     <body>
         <header>
@@ -87,21 +87,10 @@ if ($admin != "1") {
                 </ul>
             </div>
             <div class="content">
-                <h2>Products</h2>
+                <h2>Customers</h2>
                 <div class="error"><?php echo $error ?></div>
-                <input type="text" id="query" placeholder="Filter products"/>
-                <a href="editProduct.php?product=-1"><div class="addProduct">Add new Product</div></a>
-                <div class="product-header">
-                    <div>Id</div>
-                    <div>Image</div>
-                    <div>Name</div>
-                    <div>Category</div>
-                    <div>Price</div>
-                    <div>Discount</div>
-                    <div>Quantity</div>
-                    <div>Status</div>
-                </div>
-                <div class="products" id="products">
+                <input type="text" id="query" placeholder="Filter users by username"/>
+                <div class="customers">
                 </div>
             </div>
         </main>

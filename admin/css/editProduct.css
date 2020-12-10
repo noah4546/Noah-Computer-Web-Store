@@ -5,16 +5,19 @@ h2 {
 #product_form input {
     float: left;
     clear: left;
-    margin-bottom: 20px;
 } 
 
 #product_form label {
     float: left;
     clear: left;
-    margin-bottom: 3px;
+    margin-top: 20px;
 }
 
 textarea {
     float: left;
     clear: left;
 }
+
+#product_form input[type=submit] {
+    margin-top: 20px;
+} 

@@ -3,18 +3,25 @@
 include '../../php/connect.php';
 
 $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
-$description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_SPECIAL_CHARS);
 $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_FLOAT);
 $discount = filter_input(INPUT_POST, "discount", FILTER_VALIDATE_FLOAT);
 $quantity = filter_input(INPUT_POST, "discount", FILTER_VALIDATE_INT);
 $category = filter_input(INPUT_POST, "category", FILTER_SANITIZE_STRING);
 
+// There is no direct filter for these inputs but you still
+// can not sql inject or run php on product page
+$short_description = filter_input(INPUT_POST, "short_description");
+$long_description = filter_input(INPUT_POST, "long_description");
+
 $paramsok = true;
 if ($name === null || empty($name)) {
     $paramsok = false;
 }
-if ($description === null || empty($description)) {
-    $description = "";
+if ($short_description === null || empty($short_description)) {
+    $short_description = "";
+}
+if ($long_description === null || empty($long_description)) {
+    $long_description = "";
 }
 if ($price === null || $price < 0) {
     $paramsok = false;
@@ -26,7 +33,6 @@ if ($quantity === null || $quantity < 0) {
     $quantity = 0;
 }
 
-$id = 0;
 $success = false;
 if ($paramsok) {
 
@@ -39,22 +45,21 @@ if ($paramsok) {
         if ($stmt->rowCount() > 0) {
             
             $command = "UPDATE `product` 
-                        SET `name`=?, `description`=?, `price`=?, `discount`=?, `quantity`=?
+                        SET `name`=?, `short_description`=?, `long_description`=?, `price`=?, `discount`=?, `quantity`=?
                         WHERE `name`=?";
             $stmt = $dbh->prepare($command);
-            $params = [$name, $description, $price, $discount, $quantity, $name];
+            $params = [$name, $short_description, $long_description, $price, $discount, $quantity, $name];
             $success = $stmt->execute($params);
             
-
             if (!$success) {
                 $_SESSION['error'] = "Unable to connect to server, please try again";
             }
         } else {
 
-            $command = "INSERT INTO `product` (`name`, `description`, `price`, `discount`, `quantity`)
-                        VALUES (?,?,?,?,?)";
+            $command = "INSERT INTO `product` (`name`, `short_description`, `long_description`, `price`, `discount`, `quantity`)
+                        VALUES (?,?,?,?,?,?)";
             $stmt = $dbh->prepare($command);
-            $params = [$name, $description, $price, $discount, $quantity];
+            $params = [$name, $short_description, $long_description, $price, $discount, $quantity];
             $success = $stmt->execute($params);
             
 
@@ -115,6 +120,8 @@ if ($success) {
         } else {
             $_SESSION['error'] = "Unable to upload image";
         }
+    } else {
+        $_SESSION['error'] = "Error connecting to server";
     }
 
     header("Location: ../products.php");

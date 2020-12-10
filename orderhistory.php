@@ -10,26 +10,27 @@
  */
 session_start();
 
-if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username']) || !isset($_SESSION['admin'])) {
+require_once 'php/connect.php';
+
+if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username'])) {
     session_destroy();
     header("Location: login.php");
 } 
 
-$edit_error = "";
-if (isset($_SESSION['edit_error'])) {
-    $edit_error = $_SESSION['edit_error'] . ", please try again";
-    unset($_SESSION['edit_error']);
+$cart_error = "";
+if (isset($_SESSION['cart_error'])) {
+    $cart_error = $_SESSION['cart_error'];
+    unset($_SESSION['cart_error']);
+}
+
+$cart_success = "";
+if (isset($_SESSION['cart_success'])) {
+    $cart_success = $_SESSION['cart_success'];
+    unset($_SESSION['cart_success']);
 }
 
 $loggedin = $_SESSION['loggedin'];
 $id = $_SESSION['id'];
-$admin = $_SESSION['admin'];
-
-if ($admin != "1") {
-    session_destroy();
-    header("Location: ../login.php");
-}
-
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -37,27 +38,28 @@ if ($admin != "1") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../css/global.css">
-        <link rel="stylesheet" href="../css/header.css">
-        <link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/orderhistory.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="../js/main.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/orderhistory.js"></script>
     </head>
     <body>
         <header>
             <div class="header-logo">
-                <a href="../index.php"><img class="logo" src="../images/logo.png" /></a>
+                <a href="index.php"><img class="logo" src="images/logo.png" /></a>
             </div>
             <div class="header-search">
-                <form action="../search.php" method="GET">
+                <form action="search.php" method="GET">
                     <input type="search" name="search" id="search" placeholder="Search All Products"/>
-                    <input type="image" src="../images/search.png" />
+                    <input type="image" src="images/search.png" />
                 </form>
             </div>
             <div>
-                <a href="../user.php" class="header-user">
-                    <div class="header-user-image"><img src="../images/default_user.png" /></div>
+                <a href="user.php" class="header-user">
+                    <div class="header-user-image"><img src="images/default_user.png" /></div>
                     <div>Welcome</div>
                     <div class="header-user-name"><?php
                         if ($loggedin && isset($_SESSION['username'])) {
@@ -70,20 +72,14 @@ if ($admin != "1") {
                 </a> 
             </div>
             <div class="header-cart">
-                <a href="../cart.php"><img src="../images/cart.png" /></a>
+                <a href="cart.php"><img src="images/cart.png" /></a>
             </div>
         </header>
         <main>
-            <div class="menu">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="orders.php">Orders</a></li>
-                    <li><a href="products.php">Products</a></li>
-                    <li><a href="customers.php">Customers</a></li>
-                </ul>
-            </div>
-            <div class="content">
-                
+            <h1>Your Orders</h1>
+            <div><span id="number_orders">0</span> orders placed</div>
+            <div id="orders">
+
             </div>
         </main>
         <footer>
