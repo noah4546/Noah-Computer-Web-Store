@@ -49,36 +49,38 @@ if ($admin != "1") {
         <script src="js/customers.js"></script>
     </head>
     <body>
-        <div class="notice">
-            This is not a real shop, none of the products on this site will be shipped or actually sold.
-            No payment info will be taken by the user. (<a href="https://tnoah.ca/shop/info.html">More Info</a>)
-        </div>
         <header>
-            <div class="header-logo">
-                <a href="../index.php"><img class="logo" src="../images/logo.png" /></a>
+            <div class="notice">
+                This is not a real shop, none of the products on this site will be shipped or actually sold.
+                No payment info will be taken by the user. (<a href="https://tnoah.ca/shop/info.html">More Info</a>)
             </div>
-            <div class="header-search">
-                <form action="../search.php" method="GET">
-                    <input type="search" name="search" id="search" placeholder="Search All Products"/>
-                    <input type="image" src="../images/search.png" />
-                </form>
-            </div>
-            <div>
-                <a href="../user.php" class="header-user">
-                    <div class="header-user-image"><img src="../images/default_user.png" /></div>
-                    <div>Welcome</div>
-                    <div class="header-user-name"><?php
-                        if ($loggedin && isset($_SESSION['username'])) {
-                            echo $_SESSION['username'];
-                        } else {
-                            echo "Sign in / Register";
-                            session_destroy();
-                        }
-                    ?></div>
-                </a> 
-            </div>
-            <div class="header-cart">
-                <a href="../cart.php"><img src="../images/cart.png" /></a>
+            <div class="header">
+                <div class="header-logo">
+                    <a href="../index.php"><img class="logo" src="../images/logo.png" /></a>
+                </div>
+                <div class="header-search">
+                    <form action="../search.php" method="GET">
+                        <input type="search" name="search" id="search" placeholder="Search All Products"/>
+                        <input type="image" src="../images/search.png" />
+                    </form>
+                </div>
+                <div>
+                    <a href="../user.php" class="header-user">
+                        <div class="header-user-image"><img src="../images/default_user.png" /></div>
+                        <div>Welcome</div>
+                        <div class="header-user-name"><?php
+                            if ($loggedin && isset($_SESSION['username'])) {
+                                echo $_SESSION['username'];
+                            } else {
+                                echo "Sign in / Register";
+                                session_destroy();
+                            }
+                        ?></div>
+                    </a> 
+                </div>
+                <div class="header-cart">
+                    <a href="../cart.php"><img src="../images/cart.png" /></a>
+                </div>
             </div>
         </header>
         <main>
