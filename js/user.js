@@ -24,11 +24,11 @@ $(document).ready(function() {
                     </ul>
                     `;
 
-                    document.getElementById("full_name").placeholder = json.user.address.name;
-                    document.getElementById("street_address").placeholder = json.user.address.street_address;
-                    document.getElementById("city").placeholder = json.user.address.city;
-                    document.getElementById("province").placeholder = json.user.address.province;
-                    document.getElementById("postal").placeholder = json.user.address.postal;
+                    document.getElementById("full_name").value = json.user.address.name;
+                    document.getElementById("street_address").value = json.user.address.street_address;
+                    document.getElementById("city").value = json.user.address.city;
+                    document.getElementById("province").value = json.user.address.province;
+                    document.getElementById("postal").value = json.user.address.postal;
                 }
 
                 document.getElementById("current_username").innerHTML = json.user.username;

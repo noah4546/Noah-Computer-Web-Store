@@ -41,7 +41,7 @@
         if ($username === null || empty($username)) {
             return 0;
         }
-        if (strlen($username) < 6 || strlen($username) > 50) {
+        if (strlen($username) < 6 || strlen($username) > 20) {
             return 0;
         }
 

@@ -31,6 +31,7 @@ if (isset($_SESSION['cart_success'])) {
 
 $loggedin = $_SESSION['loggedin'];
 $id = $_SESSION['id'];
+$_SESSION['placed_order'] = "true";
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -83,26 +84,81 @@ $id = $_SESSION['id'];
         </header>
         <main>
             <div class="lhs">
-                <h2>Review your order</h2>
-                <div class="shipping-and-payment">
-                    <div>
-                        <h3>Shipping address <a href="user.php" class="change">Change</a></h3>
-                        <div id="address">
-                            <p>No address set</p>
+                <h1>Checkout</h1>
+                <div class="step" id="step1">
+                    <h2>1. Delivery info</h2>
+                    <div class="step-info">
+                        <div class="current-address">
+                            <h3>Current Address</h3>
+                            <div class="address">
+                                <p>No address set</p>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <h3>Payment method</h3>
-                        <p>VISA ending in 1234</p>
+                        <form class="address-radio">
+                            <input type="radio" name="address" id="existing" value="existing" checked>
+                            <label for="existing" id="existingLbl">Use Existing</label>
+
+                            <input type="radio" name="address" id="new" value="new">
+                            <label for="new">New Address</label>
+                        </form>
+                        <form class="address-form" style="display: none">
+                            <label for="full_name">Full Name: </label>
+                            <input type="text" name="full_name" id="full_name" required/>
+                            <label for="street_address">Street address: </label>
+                            <input type="text" name="street_address" id="street_address" required/>
+                            <label for="city">City: </label>
+                            <input type="text" name="city" id="city" required/>
+                            <label for="province">Province: </label>
+                            <input type="text" name="province" id="province" required/>
+                            <label for="postal">Postal Code: </label>
+                            <input type="text" name="postal" id="postal" maxlength="6" minlength="6" placeholder="A9A9A9" required/>
+                        </form>
+                        <span class="error" id="address_error"></span>
+                        <button type="button" id="tostep2" class="nextstep">Next Step</button>
                     </div>
                 </div>
-                <div id="products">
-                    No Products in cart
+                <div class="step" id="step2">
+                    <h2>2. Payment info</h2>
+                    <div class="step-info" style="display: none">
+                        <h3>No payment taken from user</h3>
+                        <p>
+                            Will not be taking payment due to this site
+                            being an example site. Press Next Step to continue
+                        </p>
+                        <button type="button" id="tostep3" class="nextstep">Next Step</button>
+                    </div>
+                </div>
+                <div class="step" id="step3">
+                    <h2>3. Review order</h2>
+                    <div class="step-info" style="display: none">
+                        <div class="shipping-and-payment">
+                            <div>
+                                <h3>Shipping address</h3>
+                                <div class="address">
+                                    <p>No address set</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <h3>Payment method</h3>
+                                    <p>VISA ending in 1234</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="products">
+                            No Products in cart
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="rhs">
                 <div class="place-order">
                     <form action="placeorder.php" method="POST">
+                        <input type="hidden" name="full_name" id="place_full_name" value="">
+                        <input type="hidden" name="street_address" id="place_street_address" value="">
+                        <input type="hidden" name="city" id="place_city" value="">
+                        <input type="hidden" name="province" id="place_province" value="">
+                        <input type="hidden" name="postal" id="place_postal" value="">
                         <input type="submit" id="place_order_button" value="Place your order" disabled>
                     </form>
                     <h4>Order Summary</h4>

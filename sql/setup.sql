@@ -42,8 +42,7 @@ CREATE TABLE `product_category` (
 );
 
 INSERT INTO `product_category` (`name`) VALUES 
-    ('uncategoried'),
-    ('graphics cards');
+    ('uncategoried');
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
@@ -59,12 +58,6 @@ CREATE TABLE `product` (
     `image_url` varchar(255) NULL default 'product0.jpg',
     `created` timestamp default CURRENT_TIMESTAMP
 );
-
-INSERT INTO `product` (`category_id`, `name`, `price`, `quantity`) VALUES
-    (2, 'RTX 3090', 1499.00, 10),
-    (2, 'RTX 3080', 699.00, 25),
-    (2, 'RTX 3070', 499.00, 200),
-    (2, 'RTX 3060 Ti', 399.00, 2500);
 
 DROP TABLE IF EXISTS `cart`;
 CREATE TABLE `cart` (
@@ -83,7 +76,7 @@ CREATE TABLE `order` (
     `user_id` int(11) NOT NULL REFERENCES `user`(`id`),
     `total` FLOAT NOT NULL,
     `date` timestamp  default CURRENT_TIMESTAMP,
-    `status` varchar(20) default 'processing'
+    `status` varchar(20) default 'Processing'
 );
 
 DROP TABLE IF EXISTS `order_item`;
@@ -94,4 +87,15 @@ CREATE TABLE `order_item` (
     `price` FLOAT NOT NULL,
     `discount` FLOAT default 0,
     `quantity` int(11) default 1
-)
+);
+
+DROP TABLE IF EXISTS `order_address`;
+CREATE TABLE `order_address` (
+    `id` int(11) NOT NULL auto_increment primary key,
+    `name` varchar(50) NOT NULL,
+    `order_id` int(11) NOT NULL REFERENCES `order`(`id`),
+    `street_address` varchar(255) NOT NULL,
+    `city` varchar(255) NOT NULL,
+    `province` varchar(20) NOT NULL,
+    `postal` varchar(6) NOT NULL
+);

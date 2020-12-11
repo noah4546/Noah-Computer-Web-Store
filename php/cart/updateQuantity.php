@@ -29,18 +29,34 @@ if ($quantity <= 0) {
 
 if ($paramsok) {
 
-    $command = "UPDATE `cart`
-                SET `quantity`=?
-                WHERE `user_id`=? AND `product_id`=?";
+    $command = "SELECT * FROM `product` WHERE `id`=?";
     $stmt = $dbh->prepare($command);
-    $params = [$quantity, $id, $product_id];
+    $params = [$product_id];
     $success = $stmt->execute($params);
 
     if ($success) {
-        $_SESSION['cart_success'] = "Updated cart quantity"; 
+        $row = $stmt->fetch();
+        $stock = $row['quantity'];
+
+        if ($quantity <= $stock) {
+            $command = "UPDATE `cart`
+                        SET `quantity`=?
+                        WHERE `user_id`=? AND `product_id`=?";
+            $stmt = $dbh->prepare($command);
+            $params = [$quantity, $id, $product_id];
+            $success = $stmt->execute($params);
+
+            if ($success) {
+                $_SESSION['cart_success'] = "Updated cart quantity"; 
+            } else {
+                $_SESSION['cart_error'] = "Unable update product in cart";
+            }
+        } else {
+            $_SESSION['cart_error'] = "Can't add more products than stock";
+        }    
     } else {
-        $_SESSION['cart_error'] = "Unable update product in cart";
-    }
+        $_SESSION['cart_error'] = "Product not found";
+    } 
 } else {
     header("Location: ../../index.php");
     die();

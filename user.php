@@ -83,7 +83,7 @@ $admin = $_SESSION['admin'];
                     <h2><a href="php/logout.php">Logout</a></h2>
                 </div>
                 <div>
-                    <h2><a href="php/deleteuser.php">Delete user</a></h2>
+                    <h2><a href="deleteuser.php">Delete user</a></h2>
                 </div>
                 <div>
                     <h2><a href="orderhistory.php">Order History</a></h2>
@@ -107,7 +107,7 @@ $admin = $_SESSION['admin'];
                                 <div id="current_username"></div>
                                 <form action="php/edit/updateUsername.php" method="POST" class="edit-form" id="form_username" style="display: none">
                                     <label for="username">New username: </label>
-                                    <input type="text" name="username" id="username" required/>
+                                    <input type="text" name="username" id="username" maxlength="20" minlength="6" required/>
                                     <input type="submit" value="Update" />
                                 </form>
                             </td>

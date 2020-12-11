@@ -12,6 +12,29 @@ session_start();
 
 require_once 'php/connect.php';
 
+$full_name = filter_input(INPUT_POST, "full_name", FILTER_SANITIZE_STRING);
+$street_address = filter_input(INPUT_POST, "street_address", FILTER_SANITIZE_STRING);
+$city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING);
+$province = filter_input(INPUT_POST, "province", FILTER_SANITIZE_STRING);
+$postal = filter_input(INPUT_POST, "postal", FILTER_SANITIZE_STRING);
+
+$addressParamsOk = true;
+if ($full_name === null || empty($full_name)) {
+    $addressParamsOk = false;
+}
+if ($street_address === null || empty($street_address)) {
+    $addressParamsOk = false;
+}
+if ($city === null || empty($city)) {
+    $addressParamsOk = false;
+}
+if ($province === null || empty($province)) {
+    $addressParamsOk = false;
+}
+if ($postal === null || empty($postal)) {
+    $addressParamsOk = false;
+}
+
 if (!isset($_SESSION['loggedin']) || !isset($_SESSION['id']) || !isset($_SESSION['username'])) {
     session_destroy();
     header("Location: login.php");
@@ -22,98 +45,133 @@ if ($_SERVER["REQUEST_METHOD"] != "POST"){
     die();
 }
 
+if (isset($_SESSION['placed_order'])) {
+    unset($_SESSION['placed_order']);
+} else {
+    header("Location: index.php");
+    die();
+}
+
 $loggedin = $_SESSION['loggedin'];
 $id = $_SESSION['id'];
 $orderplaced = false;
 $error = "";
 
-$command = "SELECT * FROM `cart` WHERE `user_id`=?";
-$stmt = $dbh->prepare($command);
-$params = [$id];
-$success = $stmt->execute($params);
+if (!$addressParamsOk) {
 
-$total = 0;
+    $command = "SELECT * 
+            FROM `user`
+            JOIN `address`
+            ON `user`.`id`=`address`.`user_id` 
+            WHERE `user_id`=?";
+    $stmt = $dbh->prepare($command);
+    $params = [$id];
+    $success = $stmt->execute($params);
 
-if ($success) {
-    if ($stmt->rowCount() >= 1) {
-        while ($row = $stmt->fetch()) {
-            $total += ($row['price'] * $row['quantity']);
+    if ($success) {
+        if ($stmt->rowCount() == 1) {
+
+            $row = $stmt->fetch();
+
+            $full_name = $row['name'];
+            $street_address = $row['street_address'];
+            $city = $row['city'];
+            $province = $row['province'];
+            $postal = $row['postal'];
+
+        } else {
+            $error = "No address for user exists";
         }
-        $total = $total * 1.13;
+    }
 
-        $command = "INSERT INTO `order` (`user_id`, `total`) VALUES (?,?)";
-        $stmt = $dbh->prepare($command);
-        $params = [$id, $total];
-        $success = $stmt->execute($params);
+}
 
-        if ($success) {
-
-            $command = "SELECT * FROM `order` 
-                        WHERE `user_id`=? 
-                        ORDER BY `id` DESC";
+if (empty($error)) {
+    $command = "SELECT * FROM `cart` WHERE `user_id`=?";
+    $stmt = $dbh->prepare($command);
+    $params = [$id];
+    $success = $stmt->execute($params);
+    
+    $total = 0;
+    
+    if ($success) {
+        if ($stmt->rowCount() >= 1) {
+            while ($row = $stmt->fetch()) {
+                $total += (($row['price'] - $row['discount'])* $row['quantity']);
+            }
+            $total = $total * 1.13;
+    
+            $command = "INSERT INTO `order` (`user_id`, `total`) VALUES (?,?)";
             $stmt = $dbh->prepare($command);
-            $params = [$id];
+            $params = [$id, $total];
             $success = $stmt->execute($params);
-
+    
             if ($success) {
-                $row = $stmt->fetch();
-                $orderid = $row['id'];
-
-                $command = "INSERT INTO `order_item` 
-                            (`product_id`, `order_id`, `price`, `discount`, `quantity`)
-                            SELECT `product_id`, ?, `price`, `discount`, `quantity`
-                            FROM `cart`
-                            WHERE `cart`.`user_id`=?";
+    
+                $command = "SELECT * FROM `order` 
+                            WHERE `user_id`=? 
+                            ORDER BY `id` DESC";
                 $stmt = $dbh->prepare($command);
-                $params = [$orderid, $id];
+                $params = [$id];
                 $success = $stmt->execute($params);
-
+    
                 if ($success) {
-
-                    $orderplaced = true;
-
-                    $command = "DELETE FROM `cart` WHERE `user_id`=?";
+                    $row = $stmt->fetch();
+                    $orderid = $row['id'];
+    
+                    $command = "INSERT INTO `order_item` 
+                                (`product_id`, `order_id`, `price`, `discount`, `quantity`)
+                                SELECT `product_id`, ?, `price`, `discount`, `quantity`
+                                FROM `cart`
+                                WHERE `cart`.`user_id`=?";
                     $stmt = $dbh->prepare($command);
-                    $params = [$id];
+                    $params = [$orderid, $id];
                     $success = $stmt->execute($params);
+    
+                    if ($success) {
+                        if ($success) {
+                            
+                            $command = "INSERT INTO `order_address` 
+                                        (`name`, `order_id`, `street_address`, `city`, `province`, `postal`)
+                                        VALUES (?,?,?,?,?,?)";
+                            $stmt = $dbh->prepare($command);
+                            $params = [$full_name, $orderid, $street_address, $city, $province, $postal];
+                            $success = $stmt->execute($params);
+        
+                            if ($success) {
+                                $orderplaced = true;
 
-                    if (!$success) {
-                        $error = "Order placed but cart not cleared, please clear your cart manualy";
+                                $command = "DELETE FROM `cart` WHERE `user_id`=?";
+                                $stmt = $dbh->prepare($command);
+                                $params = [$id];
+                                $success = $stmt->execute($params);
+
+                                if (!$success) {
+                                    $error = "Order placed but cart not cleared, please clear your cart manualy";
+                                }
+                            }
+                        } else {
+                            $error = "Error adding address to order";
+                        }    
+                    } else {
+                        $error = "Error creating order please try again";
+    
+                        $command = "DELETE FROM `order` WHERE `id`=?";
+                        $stmt = $dbh->prepare($command);
+                        $params = [$orderid];
+                        $success = $stmt->execute($params);
                     }
                 } else {
                     $error = "Error creating order please try again";
-
-                    $command = "DELETE FROM `order` WHERE `id`=?";
-                    $stmt = $dbh->prepare($command);
-                    $params = [$orderid];
-                    $success = $stmt->execute($params);
                 }
             } else {
                 $error = "Error creating order please try again";
             }
         } else {
-            $error = "Error creating order please try again";
+            $error = "No items in cart";
         }
-    } else {
-        $error = "No items in cart";
     }
 }
-
-/*
-$command = "INSERT INTO `order` (`user_id`, `total`) VALUES (?,?)";
-$stmt = $dbh->prepare($command);
-$params = [$id];
-$success = $stmt->execute($params);
-
-if ($success) {
-    
-    $command = "SELECT * FROM `cart` WHERE `user_id`=?";
-    $stmt = $dbh->prepare($command);
-    $params = [$id];
-    $success = $stmt->execute($params);
-
-}
-*/
 ?><!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -167,14 +225,14 @@ if ($success) {
         <main>
             <?php if ($orderplaced) { ?>
                 <div>
-                    <h2>Your order has been successfuly placed!</h2>
-                    <h4><a href="index.php">Continue shopping</a><a href="php/logout.php">Logout</a></h4>
+                    <h2>Your order has been successfully placed!</h2>
+                    <h4><a href="index.php">Continue shopping</a><a href="orderhistory.php">Go to orders</a><a href="php/logout.php">Logout</a></h4>
                 </div>
             <?php } else { ?>
                 <div>
                     <h2>Failed placing order, please try again</h2>
                     <h3><?= $error ?></h3>
-                    <h4><a href="index.php">Continue shopping</a><a href="php/logout.php">Logout</a></h4>
+                    <h4><a href="index.php">Continue shopping</a><a href="cart.php">Go to cart</a><a href="php/logout.php">Logout</a></h4>
                 </div>
             <?php } ?>
         </main>

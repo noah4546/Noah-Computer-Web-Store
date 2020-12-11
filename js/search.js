@@ -72,6 +72,10 @@ $(document).ready(function() {
                 </a>
                 `;
             }
+
+            $(".not-found").hide();
+        } else {
+            $(".not-found").show();
         }
 
         products_div.innerHTML = products;

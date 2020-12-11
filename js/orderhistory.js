@@ -26,6 +26,18 @@ $(document).ready(function() {
                             <div class="order-header-heading">TOTAL</div>
                             <div class="order-header-info">$${parseFloat(json.orders[i].total).toFixed(2)}</div>
                         </div>
+                        <div class="order-header-ship">
+                            <div class="order-header-heading">SHIP TO</div>
+                            <div class="order-header-info">
+                            <ul>
+                                <li>${json.orders[i].address.name}</li>
+                                <li>${json.orders[i].address.street_address}</li>
+                                <li>${json.orders[i].address.city}</li>
+                                <li>${json.orders[i].address.province}</li>
+                                <li>${json.orders[i].address.postal}</li>
+                            </ul>
+                            </div>
+                        </div>
                         <div class="order-header-number">
                             <div class="order-header-heading">ORDER NUMBER</div>
                             <div class="order-header-info">#${json.orders[i].id}</div>

@@ -17,6 +17,12 @@ $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
 if ($username === null || empty($username)) {
     $_SESSION['edit_error'] = "username is empty";
     header("Location: ../../user.php");
+    die();
+}
+if (strlen($username) > 20 || strlen($username) < 6){
+    $_SESSION['edit_error'] = "username must be 6~30 chacters";
+    header("Location: ../../user.php");
+    die();
 }
 
 $command = "SELECT * FROM `user` WHERE `username`=?";

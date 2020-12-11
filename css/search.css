@@ -5,7 +5,7 @@
 
 .product-image img {
     width: 90%;
-    margin: 0 5%;
+    margin: 5px 5%;
     max-width: 200px;
 }
 
@@ -15,6 +15,12 @@
 
 .product-price {
     font-size: 1.2em;
+}
+
+.not-found {
+    text-align: center;
+    padding-top: 20px;
+    display: none;
 }
 
 /* Mobile Screens */
@@ -46,7 +52,7 @@
     .product-item {
         border: 1px solid black;
         width: 200px;
-        height: 350px;
+        height: 360px;
     }
 
 }

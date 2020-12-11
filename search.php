@@ -48,7 +48,7 @@ $loggedin = $_SESSION['loggedin'];
                 </div>
                 <div class="header-search">
                     <form action="search.php" method="GET">
-                        <input type="search" name="search" id="search" placeholder="Search All Products"/>
+                        <input type="search" name="search" id="search" placeholder="Search All Products" value="<?= $search ?>"/>
                         <input type="image" src="images/search.png" />
                     </form>
                 </div>
@@ -72,6 +72,10 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
+            <div class="not-found">
+                <h2>No products found</h2>
+                <h3>Please try a differnet search query</h3>
+            </div>
             <div id="products">
                 
             </div>

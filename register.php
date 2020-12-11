@@ -128,11 +128,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="index.php"><img src="images/logo.png" /></a>
                 <h2>Sign Up</h2>
 
-                <input type="email" name="email" id="email" placeholder="Email Adrress" required/>
+                <input type="email" name="email" id="email" placeholder="Email Address" required/>
                 <span class="error"><?php echo $email_err ?></span>
                 <input type="text" name="username" id="username" placeholder="Username" maxlength="30" minlength="6" required/>
                 <span class="error"><?php echo $username_err ?></span>
-                <input type="password" name="password" id="password" placeholder="Password" maxlength="30" minlength="8" required/>
+                <input type="password" name="password" id="password" placeholder="Password" maxlength="20" minlength="8" required/>
                 <span class="error"><?php echo $password_err ?></span>
                 <input type="password" name="confirm_password" id="confirm_password" placeholder="Comfirm Password" maxlength="30" minlength="8"  required/>
                 <span class="error"><?php echo $confirm_password_err ?></span>
