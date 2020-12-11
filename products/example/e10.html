@@ -1,0 +1,286 @@
+<div id="product-overview" class="article"><div><style type="text/css">
+    /* 
+    overview style v2.9.1
+    Apr.25, 2019
+    */
+    
+    /* initializing */
+    #overview-content h3.title_1, h3.title_2, p, ul, ol {padding:0; margin:0;}
+    #overview-content {font:14.3px "Segoe UI", Helvetica, sans-serif; color:#4d4d4d;}
+    
+    /* colors */
+    #overview-content .bg_black {background-color:black;}
+    #overview-content .bg_rgb {background-color:rgb(245,245,245);}
+    #overview-content .a_plus_info .color_w {color:white;}
+    #overview-content .a_plus_info .color_w2 {color:#F5F5F5;}
+    #overview-content .a_plus_info .color_b {color:black;}
+    
+    /* titles */	
+    #overview-content h3.title_1, h3.title_2 {padding-top:0.5em; line-height:1.2em;}
+    #overview-content h3.title_1 {color:black; font-size:1.5em; font-weight:700;} 
+    #overview-content h3.title_2 {color:black; font-size:1.2em; font-weight:500;}
+    #overview-content h3.title_2.for_column {text-align:center;}
+    
+    /* dividers */
+    #overview-content .logovc {max-width:100%; height:50px; margin-left:4%; margin-top:1em; background:url(//images10.newegg.com/BizIntell/item/81/716/81-716-013/logo.png) no-repeat;}
+    
+    #overview-content .section_head {color:black; text-align:left; margin-left:2.5%; margin-top:1.5em; font-size:1.5em; font-weight:700; line-height:1.5em; padding:5px;}
+    #overview-content .section_head_2 {border-bottom:1px solid black; margin:1em 0; text-align:center; font-size:1.5em; height:1.2em;}
+    #overview-content .section_head_2 span {color:black; background-color:white; font-weight:400; padding:0 10px; line-height:48px;}
+    #overview-content .section_head_3 {border-bottom:1px solid black; color:black; font-size:1.3em; font-weight:400; margin:2em 4%; padding-bottom:0.3em;}
+    #overview-content .section_head_4 {border-left:10px solid black; color:black; padding-left:10px; font-size:1.3em; font-weight:500; margin:3em 4% 0.5em; }
+    
+    #overview-content .ov_divider {border-top:1px solid #d4d4d4; margin:1.5em 0;}
+    
+    /* text */
+    #overview-content .a_plus_info p {display:block; padding:0.5em 0; margin:0; line-height: 1.2em;}
+    #overview-content .a_plus_column p {padding-bottom:0.8em;}
+    #overview-content .center {text-align:center;}
+    #overview-content .left {text-align:left;}
+    #overview-content .a_plus_info .ov_note {color:gray; font-size:0.9em; font-style:italic;}
+    
+    /* general */
+    #overview-content .a_plus_module {position: relative; margin: 3em 0; padding: 0; overflow: hidden;}
+    #overview-content .a_plus_module.space_0 {margin:0;}
+    #overview-content .a_plus_module .a_plus_info {padding: 0 3%;}
+    
+    #overview-content img {display: block; margin: 0 auto; max-width: 100%;}
+    #overview-content img.width_90 {max-width: 94%;}
+    
+    #overview-content .ov_banner .a_plus_info {padding:1em 3% 1.5em 3%;}
+    #overview-content .ov_banner img {width:100%;}
+    
+    /* list */
+    #overview-content ul, ol {margin:0; padding-top:0.5em;}
+    #overview-content ul {list-style-type: disc; padding-left:25px; text-align:left;}
+    #overview-content li {margin-bottom: 0.5em;}
+    
+    /* clear */
+    #overview-content .a_plus_content:before, .a_plus_content:after, .a_plus_module:before, .a_plus_module:after, .a_plus_info:after {content: ''; display: table; clear: both;}
+    #overview-content .clearvc {width:100%; clear:both; margin:0 auto;}
+        
+    @media (min-width: 768px) {
+        
+        /* image float */
+        #overview-content .content_float {padding:0 4%;}
+        
+        #overview-content img.img_f_left {float: left; max-width: 40%;}
+        #overview-content img.img_f_right {float: right; max-width:40%;}
+        
+        #overview-content .a_plus_info.txt_f_right {float:right; width:58%; padding:2.5em 0;}
+        #overview-content .a_plus_info.txt_f_left {float:left; width:58%; padding:2.5em 0;}
+        
+        /* several columns */	
+        #overview-content .a_plus_column {float:left; padding:1em 0 0.5em 3%;}
+        #overview-content .a_plus_column:first-child {padding-left:3%;}
+        
+        #overview-content .two_columns .a_plus_column {width:44.5%;}	
+        #overview-content .three_columns .a_plus_column {width:29.33%;}
+        #overview-content .four_columns .a_plus_column {width:20.75%;} 
+        
+        }
+    
+    @media (min-width: 768px) and (max-width: 1050px) {
+    
+        /* make float-text not drop too much */
+        #overview-content .a_plus_info.txt_f_right, 
+        #overview-content .a_plus_info.txt_f_left {padding:0;}
+        #overview-content .a_plus_info.txt_f_right h3.title_1,
+        #overview-content .a_plus_info.txt_f_left h3.title_1 {padding-top:0;}
+        
+    }	
+    
+    @media (max-width: 767px) {
+        
+        /* cancel float */
+        #overview-content .a_plus_column, .txt_f_right, .txt_f_left, .img_f_left, .img_f_right {float:none;}
+        
+        /* general */
+      #overview-content .a_plus_info p {font-size:1.05em;}
+        #overview-content .a_plus_module {margin:2em 0;}
+        #overview-content img {margin:0 auto; max-width:94%;}
+        #overview-content .ov_banner img {max-width:100%;}
+        
+        #overview-content .a_plus_column {margin:2em 0;}
+        #overview-content .a_plus_column .a_plus_info {padding:0 3%;}
+            
+        /* text */
+        #overview-content h3.title_1.center, #overview-content h3.title_2.center, #overview-content p.center {text-align:left;}
+        #overview-content .a_plus_column p.center {text-align:center;}	
+        
+    }
+    </style>
+        
+    <div id="overview-content">
+        <article class="a_plus_content">
+            
+            <div class="ov_banner bg_black">
+          <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/Nest-Mini.jpg" alt="Google Nest Mini placed alongside several books on a marble desk">
+          
+          <div class="a_plus_info">
+            <h3 class="title_1 color_w">
+              Nest Mini
+              </h3>
+                    <h3 class="title_2 color_w">
+               Still mini. More mighty
+              </h3>
+                    
+                    <p class="color_w2">
+            Meet the new Nest Mini, now featuring stronger bass that makes your music sound better, improved voice pick-up that can hear you across the room, and a fabric covering that's built using 100% recycled materials. You can hang it on the wall with the integrated wall mount. Get to music, entertainment, help, and exclusive Frozen 2 stories, and control your smart home by simply speaking commands to Google Assistant. When you approach it, its controls will light up for convenience.</p>
+          </div>
+        </div><br>
+        
+          <div class="section_head">Totally enhanced</div>
+            
+            <div class="three_columns">
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/sound.jpg" alt="Google Nest Mini internal structure">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+                Bigger, richer sound
+                </h3>
+                  
+              <p>
+              Google Nest Mini has 2x stronger bass than the original Mini.<sup>1</sup>
+              </p>
+              </div>
+          </div>
+          
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/fabric.jpg" alt="Google Nest Mini front view">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+              Made with the environment in mind
+              </h3>
+                  
+              <p>
+              Durable fabric top made from 100% recycled plastic bottles.
+              </p>
+              </div>
+          </div>
+          
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/recognition.jpg" alt="Google Nest Mini bottom view">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+                Improved voice recognition
+                </h3>
+                  
+              <p>
+              Ask for help from across the room.<sup>1</sup>
+              </p>
+              </div>
+          </div>
+          
+          <div class="clearvc"></div>
+        </div>
+            
+            <div class="section_head">Thoughtfully designed</div>
+            
+            <div class="three_columns">
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/mount.jpg" alt="Aqua Google Nest Mini hanged on a wall">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+                Hang it on the wall
+                </h3>
+                  
+              <p>
+             The integrated wall mount makes it easy to put in any room.
+              </p>
+              </div>
+          </div>
+          
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/LEDs.jpg" alt="a woman holding a cup of coffee is checking Google Nest Mini">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+              Easy volume controls  
+              </h3>
+                  
+              <p>
+              LEDs light up to show your volume controls when you approach it.
+              </p>
+              </div>
+          </div>
+          
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/stories.jpg" alt="Google Nest Mini placed on a wooden desk with a Frozen 2 logo">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2">
+                Exclusive Frozen 2 stories
+                </h3>
+                  
+              <p>
+              Bring some Disney magic into your home with tales from Anna, Elsa, Kristoff and Olaf.
+              </p>
+              </div>
+          </div>
+          
+          <div class="clearvc"></div>
+        </div>
+            
+            <div class="a_plus_module">
+            <img class="width_90" src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/entertainment.jpg" alt="several compatible music and video services logos for Google Nest Mini">
+          
+            <div class="a_plus_info">
+                <h3 class="title_1">
+                Play music and entertainment from your favorite apps with your voice.<sup>2</sup>
+                </h3>
+          
+                <p>
+                Just ask your Google Assistant. Or stream to Nest Mini from your phone.<sup>3</sup>
+                </p>
+            </div>
+          </div>
+            
+            <div class="a_plus_module">
+            <img class="width_90" src="//images10.newegg.com/BizIntell/item/81/716/81-716-013/Google_Assistant.jpg" alt="Google Nest Mini placed on a wooden desk alongside some dishes">
+          
+            <div class="a_plus_info">
+                <h3 class="title_1">
+                Get help around your home with your Google Assistant.
+                </h3>
+          
+                <p>
+                Just ask and get the best of Google—weather, news or almost anything. Hear your personalized schedule, commute and reminders.<sup>3</sup> Set timers and alarms.
+                </p>
+                    
+                    <h3 class="title_1">
+                Control your home with just your voice.
+                </h3>
+          
+                <p>
+                Dim the lights, turn on the TV, or turn up the heat—just ask your Google Assistant.4 Works with more than a thousand compatible smart devices.
+                </p>
+            </div>
+          </div>
+            
+                
+                <div class="ov_divider"></div>
+        <div class="a_plus_module">
+          <div class="a_plus_info">				
+            <h3 class="title_1 ov_note">
+            Notes:
+            </h3>
+                
+            <p class="ov_note">
+            1. As compared to Google Home Mini. Measured at 60-100 Hz at max volume. Google Nest Mini requires a Wi-Fi network, a nearby electrical outlet, a Google Account, and a compatible mobile device.
+            </p>
+                    
+            <p class="ov_note">
+            2. Subscriptions may be required for certain content. Additional terms, conditions and/or charges may apply. Nest Mini is optimized for selected content services only. Chromecast-enabled apps required.
+            </p>	
+                    <p class="ov_note">
+            3. Personalized features require additional setup and enrollment, and support up to six users. When using Voice Match, keep in mind that a voice similar to yours, or a recording of your voice, could result in Google incorrectly recognizing someone else as you.
+          </p></div>
+        </div>
+            
+        </article>
+    </div></div></div>

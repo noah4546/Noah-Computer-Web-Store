@@ -1,0 +1,204 @@
+<div id="product-overview" class="article"><div><style type="text/css">
+    /* 
+    overview style v2.9.2
+    Mar.18, 2020
+    */
+    
+    /* initializing */
+    #overview-content h3.title_1, h3.title_2, p, ul, ol {padding:0; margin:0;}
+    #overview-content {font:14.3px "Nunito", Helvetica, sans-serif; color:#dedede;}
+    
+    /* colors */
+    #overview-content .bg_black {background-color:black;}
+    #overview-content .bg_rgb {background-color:#f5f5f5;}
+    #overview-content .a_plus_info .color_w {color:white;}
+    #overview-content .a_plus_info .color_w2 {color:#dedede;}
+    #overview-content .a_plus_info .color_b {color:black;}
+    
+    /* titles */	
+    #overview-content h3.title_1, h3.title_2 {padding-top:0.25em; line-height:1.3em;}
+    #overview-content h3.title_1 {color:white; font-size:1.5em; font-weight:700;} 
+    #overview-content h3.title_2 {color:white; font-size:1.1em; font-weight:700;}
+    #overview-content h3.title_2.for_column {text-align:center;}
+    
+    /* dividers */
+    #overview-content .logovc {max-width:100%; height:50px; margin-left:3%; margin-top:1em; background:url(//images10.newegg.com/BizIntell/item/17/517/17-517-015/logo.png) no-repeat;}
+    
+    #overview-content .section_head {color:black; text-align:center; font-size:1.5em; font-weight:500; line-height:1.5em; padding:5px; margin-top:2em;}
+    #overview-content .section_head_2 {border-bottom:1px solid black; margin:1em 0; text-align:center; font-size:1.5em; height:1.2em;}
+    #overview-content .section_head_2 span {color:black; background-color:white; font-weight:400; padding:0 10px; line-height:48px;}
+    #overview-content .section_head_3 {border-bottom:1px solid black; color:black; font-size:1.3em; font-weight:400; margin:2em 4%; padding-bottom:0.3em;}
+    #overview-content .section_head_4 {border-left:10px solid black; color:black; padding-left:10px; font-size:1.3em; font-weight:500; margin:3em 4% 0.5em; }
+    
+    #overview-content .ov_divider {border-top:1px solid #fdc903; margin: 0;}
+    
+    /* text */
+    #overview-content .a_plus_info p {display:block; padding:0.25em 0; margin:0; line-height: 1.3em;}
+    #overview-content .center {text-align:center;}
+    #overview-content .left {text-align:left;}
+    #overview-content .a_plus_info .ov_note {color:gray; font-size:0.9em; font-style:italic;}
+    
+    /* general */
+    #overview-content .a_plus_module {position: relative; margin: 3em 0; padding: 0; overflow: hidden;}
+    #overview-content .a_plus_module.space_0 {margin:0;}
+    #overview-content .a_plus_module .a_plus_info {padding: 0 3%;}
+    
+    #overview-content img {display: block; margin: 0 auto; max-width: 100%;}
+    #overview-content img.width_90 {max-width: 94%;}
+    
+    #overview-content .ov_banner .a_plus_info {padding:1.5em 3% 1.5em 3%;}
+    #overview-content .ov_banner img {width:100%;}
+    
+    /* list */
+    #overview-content ul, ol {margin:0; padding-top:0.25em;}
+    #overview-content ul {list-style-type: disc; padding-left:4px; text-align:left;}
+    #overview-content li {margin-bottom: 0.25em;}
+    
+    /* clear */
+    #overview-content .a_plus_content:before, .a_plus_content:after, .a_plus_module:before, .a_plus_module:after, .a_plus_info:after {content: ''; display: table; clear: both;}
+    #overview-content .clearvc {width:100%; clear:both; margin:0 auto;}
+    
+        
+    @media (min-width: 768px) {
+        
+      #overview-content .game_video {margin:1em 3%;}
+      
+        /* image float */
+        #overview-content .content_float {padding:0 3%;}
+        
+        #overview-content img.img_f_left {float: left; max-width: 40%;}
+        #overview-content img.img_f_right {float: right; max-width:40%;}
+        
+        #overview-content .a_plus_info.txt_f_right {float:right; width:56%; padding:2.5em 0;}
+        #overview-content .a_plus_info.txt_f_left {float:left; width:56%; padding:2.5em 0;}
+        
+        /* several columns */	
+        #overview-content .a_plus_column {float:left; padding:1em 0 0.5em 3%;}
+        #overview-content .a_plus_column:first-child {padding-left:3%;}
+        
+        #overview-content .two_columns .a_plus_column {width:45.5%;}	
+        #overview-content .three_columns .a_plus_column {width:29.3%;}
+        #overview-content .four_columns .a_plus_column {width:21.25%;} 
+        #overview-content .five_columns .a_plus_column {width:16.4%;} 
+        
+        /* text on img */
+        #overview-content .text_on_img {margin:0;}
+        #overview-content .text_on_img .a_plus_info {padding:0.5em 1em;}
+    
+        #overview-content .center_b, .center_w {text-align:center;}
+        
+        #overview-content .right_b, .left_b, .center_b {background:rgba(255,255,255,0);}
+        #overview-content .right_w, .left_w, .center_w {background:rgba(0,0,0,0);}
+        
+        #overview-content .right_b,
+        #overview-content .right_w {position:absolute; left:54%; top:10%; width:40%;}
+    
+        #overview-content .left_b,
+        #overview-content .left_w {position:absolute; right:54%; top:10%; width:40%;}
+    
+        #overview-content .center_b, 
+        #overview-content .center_w {position:absolute; margin:0; left:25%; top:15%; width:50%;}
+        
+        }
+    
+    @media (min-width: 768px) and (max-width: 1050px) {
+    
+        /* make float-text not drop too much */
+        #overview-content .a_plus_info.txt_f_right, 
+        #overview-content .a_plus_info.txt_f_left {padding:0;}
+        #overview-content .a_plus_info.txt_f_right h3.title_1,
+        #overview-content .a_plus_info.txt_f_left h3.title_1 {padding-top:1em;}
+        
+    }	
+    
+    @media (max-width: 767px) {
+        
+      #overview-content .game_video {margin:1em 0;}
+       
+        /* cancel float */
+        #overview-content .a_plus_column, .txt_f_right, .txt_f_left, .img_f_left, .img_f_right {float:none;}
+        
+        /* general */
+      #overview-content .a_plus_info p {font-size:1.05em;}
+        #overview-content .a_plus_module {margin:2em 0;}
+        #overview-content img {margin:0 auto; max-width:94%;}
+        #overview-content .ov_banner img {max-width:100%;}
+        
+        #overview-content .a_plus_column {margin:2em 0;}
+        #overview-content .a_plus_column .a_plus_info {padding:0 3%;}
+            
+        /* text */
+        #overview-content h3.title_1.center, #overview-content h3.title_2.center, #overview-content p.center {text-align:left;}
+        #overview-content .a_plus_column p.center {text-align:center;}	
+        
+        /* text on img */	
+        #overview-content .text_on_img img {max-width:100%;}
+        #overview-content .right_b, .right_w, .left_b, .left_w, .center_b, .center_w {background:white;}
+      #overview-content .right_w, .left_w, .center_w {background:rgb(39,39,39); margin-bottom:1em;}
+      
+      #overview-content .right_w p, 
+      #overview-content .left_w p, 
+      #overview-content .center_w p {padding-bottom:1em;}
+      
+        #overview-content .right_w .color_w, 
+        #overview-content .left_w .color_w, 
+        #overview-content .center_w .color_w,
+        #overview-content .right_w .color_w2, 
+        #overview-content .left_w .color_w2, 
+        #overview-content .center_w .color_w2 {color:#F5F5F5;}
+        
+    }
+    
+    </style>
+        
+    <div id="overview-content">
+        <article class="a_plus_content bg_black">
+            
+            <link href="https://fonts.googleapis.com/css2?family=Nunito&amp;display=swap" rel="stylesheet"> 	
+            
+            <div class="a_plus_module content_float">
+          <img src="//images10.newegg.com/BizIntell/item/17/517/17-517-015/0.jpg" alt="img" class="img_f_left">
+          
+          <div class="a_plus_info txt_f_right">
+            <h3 class="title_1">AZZA PSAZ-550W </h3>
+    
+              <p>Get the power you need for your high-performance PC with this 550W power supply from AZZA. It is certified for 80 Plus Bronze to ensure great efficiency and reduce heat production. A 120mm fan keeps it stable and quiet across a wide range of loads. </p>
+          </div>
+        </div>
+            
+            <div class="ov_divider"></div><br>
+            
+            <div class="two_columns">
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/17/517/17-517-015/a.jpg" alt="img">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2 for_column">80 Plus Bronze Certified Efficiency</h3>
+             
+              <p class="center">80 Plus Bronze certification ensures your power supply isn't wasting power and turning it into excess heat. Under typical load, this supply is 85% efficient or higher. </p>
+              </div>
+          </div>
+          
+          <div class="a_plus_column">
+              <img src="//images10.newegg.com/BizIntell/item/17/517/17-517-015/b.jpg" alt="img">
+              
+              <div class="a_plus_info">
+              <h3 class="title_2 for_column">Single +12V Rail </h3>
+             
+              <p class="center">A single +12V rail offers the best power input, rail stability, and compatibility with the latest hardware. </p>
+              </div>
+          </div>
+          
+          <div class="clearvc"></div>
+        </div>
+            
+            <div class="a_plus_module">	
+          <img src="//images10.newegg.com/BizIntell/item/17/517/17-517-015/1.jpg" alt="img">
+          </div> 
+        
+            <div class="a_plus_module">	
+          <img class="width_90" src="//images10.newegg.com/BizIntell/item/17/517/17-517-015/2.jpg" alt="img">
+          </div> 
+            
+        </article>
+    </div></div></div>

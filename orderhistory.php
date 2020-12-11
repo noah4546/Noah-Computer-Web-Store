@@ -47,6 +47,10 @@ $id = $_SESSION['id'];
         <script src="js/orderhistory.js"></script>
     </head>
     <body>
+        <div class="notice">
+            This is not a real shop, none of the products on this site will be shipped or actually sold.
+            No payment info will be taken by the user. (<a href="https://tnoah.ca/shop/info.html">More Info</a>)
+        </div>
         <header>
             <div class="header-logo">
                 <a href="index.php"><img class="logo" src="images/logo.png" /></a>

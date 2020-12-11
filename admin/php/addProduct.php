@@ -11,7 +11,6 @@ $status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRING);
 // There is no direct filter for these inputs but you still
 // can not sql inject or run php on product page
 $short_description = filter_input(INPUT_POST, "short_description");
-$long_description = filter_input(INPUT_POST, "long_description");
 
 $paramsok = true;
 if ($name === null || empty($name)) {
@@ -19,9 +18,6 @@ if ($name === null || empty($name)) {
 }
 if ($short_description === null || empty($short_description)) {
     $short_description = "";
-}
-if ($long_description === null || empty($long_description)) {
-    $long_description = "";
 }
 if ($price === null || $price < 0) {
     $paramsok = false;
@@ -48,10 +44,10 @@ if ($paramsok) {
         if ($stmt->rowCount() > 0) {
             
             $command = "UPDATE `product` 
-                        SET `name`=?, `short_description`=?, `long_description`=?, `price`=?, `discount`=?, `quantity`=?, `status`=?
+                        SET `name`=?, `short_description`=?, `price`=?, `discount`=?, `quantity`=?, `status`=?
                         WHERE `name`=?";
             $stmt = $dbh->prepare($command);
-            $params = [$name, $short_description, $long_description, $price, $discount, $quantity, $status, $name];
+            $params = [$name, $short_description, $price, $discount, $quantity, $status, $name];
             $success = $stmt->execute($params);
             
             if (!$success) {
@@ -59,10 +55,10 @@ if ($paramsok) {
             }
         } else {
 
-            $command = "INSERT INTO `product` (`name`, `short_description`, `long_description`, `price`, `discount`, `quantity`, `status`)
-                        VALUES (?,?,?,?,?,?,?)";
+            $command = "INSERT INTO `product` (`name`, `short_description`, `price`, `discount`, `quantity`, `status`)
+                        VALUES (?,?,?,?,?,?)";
             $stmt = $dbh->prepare($command);
-            $params = [$name, $short_description, $long_description, $price, $discount, $quantity, $status];
+            $params = [$name, $short_description, $price, $discount, $quantity, $status];
             $success = $stmt->execute($params);
             
 
@@ -81,7 +77,7 @@ if (!empty($_SESSION['error'])) {
     header("Location: ../products.php");
 }
 
-if ($success && isset($_FILES['image'])) {
+if ($success && isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
 
     $command = "SELECT `id` FROM `product` WHERE `name`=?";
     $stmt = $dbh->prepare($command);
@@ -102,6 +98,7 @@ if ($success && isset($_FILES['image'])) {
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
             $_SESSION['error'] = "Incorect file type, must be: jpg, png, jpeg, gif";
             header("Location: ../products.php");
+            die();
         }
 
         if(file_exists($target_file)) {
@@ -128,7 +125,9 @@ if ($success && isset($_FILES['image'])) {
     }
 }
 
-if ($success && isset($_FILES['long_description'])) {
+if ($success && isset($_FILES['long_description']) && !empty($_FILES['long_description']['name'])) {
+
+    var_dump($_FILES['long_description']);
 
     $command = "SELECT `id` FROM `product` WHERE `name`=?";
     $stmt = $dbh->prepare($command);
@@ -140,26 +139,27 @@ if ($success && isset($_FILES['long_description'])) {
         $row = $stmt->fetch();
         $id = $row['id'];
 
-        $target_dir = "../../images/products/";
-        $target_file = $target_dir . basename($_FILES['image']['name']);
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        $file_name = "product" . $id . "." . $imageFileType;
+        $target_dir = "../../products/";
+        $target_file = $target_dir . basename($_FILES['long_description']['name']);
+        $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $file_name = "product" . $id . "." . $fileType;
         $target_file = $target_dir . $file_name;
 
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
-            $_SESSION['error'] = "Incorect file type, must be: jpg, png, jpeg, gif";
+        if($fileType != "html" && $fileType != "htm") {
+            $_SESSION['error'] = "Incorect file type, must be: .html";
             header("Location: ../products.php");
+            die();
         }
 
         if(file_exists($target_file)) {
             unlink($target_file);
         }
 
-        $success = move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+        $success = move_uploaded_file($_FILES['long_description']['tmp_name'], $target_file);
 
         if ($success) {
             
-            $command = "UPDATE `product` SET `image_url`=? WHERE `id`=?";
+            $command = "UPDATE `product` SET `long_description`=? WHERE `id`=?";
             $stmt = $dbh->prepare($command);
             $params = [$file_name, $id];
             $success = $stmt->execute($params);

@@ -76,12 +76,12 @@ $(document).ready(function() {
                 </div>
             `
 
-            document.getElementById("product_name").innerHTML = name;
-            document.getElementById("product_image").innerHTML = image;
-            document.getElementById("product_price").innerHTML = priceAndDiscount;
-            document.getElementById("short_description").innerHTML = short_description;
-            document.getElementById("product_buy").innerHTML = product_buy;
-            document.getElementById("long_description").innerHTML = long_description;
+            $("#product_name").html(name);
+            $("#product_image").html(image);
+            $("#product_price").html(priceAndDiscount);
+            $("#short_description").html(short_description);
+            $("#product_buy").html(product_buy);
+            $("#long_description").load(`products/${long_description}`);
         }
     }
 

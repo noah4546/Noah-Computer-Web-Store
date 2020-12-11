@@ -1,0 +1,1 @@
+DELETE FROM `product` WHERE `image_url` LIKE 'example/%';

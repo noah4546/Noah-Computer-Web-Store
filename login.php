@@ -98,6 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <script src='js/main.js'></script>
     </head>
     <body>
+        <div class="notice">
+            This is not a real shop, none of the products on this site will be shipped or actually sold.
+            No payment info will be taken by the user. (<a href="https://tnoah.ca/shop/info.html">More Info</a>)
+        </div>
         <main>
             <form action="login.php" method="POST">
 

@@ -1,0 +1,39 @@
+.welcome-info {
+    margin-top: 40px;
+    width: 60%;
+}
+
+.welcome-info-group {
+    margin-bottom: 20px;
+}
+
+.products-info {
+    margin-left: 40px;
+}
+
+.products-info div {
+    margin-top: 10px;
+}
+
+.products-info ul {
+    margin-left: 40px;
+}
+
+.products-info li {
+    margin-top: 4px;
+}
+
+.examples h4 {
+    margin-top: 20px;
+}
+
+.examples h4 a {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: lightblue;
+}
+
+.cite {
+    padding-top: 20px;
+}
