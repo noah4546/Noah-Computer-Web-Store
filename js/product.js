@@ -24,12 +24,18 @@ $(document).ready(function() {
             let disabled = "";
 
             let stock = `<span class="instock">In Stock</span>`;
-            if (quantity == 0) {
-                stock = `<span class="outstock">Out of Stock</span>`;
-                disabled = "disabled";
-            } else if (quantity <= 50) {
-                stock = `<span class="lowstock">Low Stock, ${quantity} left</span>`;
-            }
+                if (json.product.status == "unavailable") {
+                    stock = `<span class="outstock">Unavailable</span>`;
+                    disabled = "disabled";
+                } else if (json.product.status == "discontinued") {
+                    stock = `<span class="outstock">Discontinued</span>`;
+                    disabled = "disabled";
+                } else if (quantity == 0) {
+                    stock = `<span class="outstock">Out of Stock</span>`;
+                    disabled = "disabled";
+                } else if (quantity <= 50) {
+                    stock = `<span class="lowstock">Low Stock, ${quantity} left</span>`;
+                }
 
             if (json.product.discount > 0) {
 

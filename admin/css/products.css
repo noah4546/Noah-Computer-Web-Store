@@ -1,7 +1,6 @@
 .product-header, .product-item {
     display: grid;
-    grid-template-columns: 3% 10% 37% 10% 10% 10% 10% 10%;
-    font-size: 1.2em;
+    grid-template-columns: 50px 10% auto 150px 100px 100px 100px 150px 200px;
     border-bottom: 1px solid black;
     padding: 3px;
 }
@@ -28,4 +27,8 @@
 
 .product-item img{
     width: 100%;
+}
+
+.product-item div {
+    padding: 5px;
 }

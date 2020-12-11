@@ -2,7 +2,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-#product_form input {
+#product_form input, #product_form select {
     float: left;
     clear: left;
 } 
@@ -20,4 +20,6 @@ textarea {
 
 #product_form input[type=submit] {
     margin-top: 20px;
+    padding: 3px;
+    font-size: 1.3em;
 } 

@@ -18,3 +18,9 @@ Default users (must change admin password):
 
     username: user
     password: userP&ss
+
+## Example products (enabled in admin control pannel)
+
+- SAMSUNG S22E450D 22" (Actual size 21.5") Full HD 1920 x 1080 VGA DVI DisplayPort Flicker-Free Eye Saver Technology Backlit LED Monitor
+- MSI Laptop Prestige 15 A10SC-296 Intel Core i7 10th Gen 10510U (1.80 GHz) 16 GB Memory 1 TB NVMe SSD NVIDIA GeForce GTX 1650 Max-Q 15.6" Windows 10 Home 64-bit
+- ABS Master Gaming PC - Ryzen 5 3600X - GeForce RTX 2060 - 16GB DDR4 3000MHz - 512GB SSD

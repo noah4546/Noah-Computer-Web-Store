@@ -51,7 +51,7 @@ CREATE TABLE `product` (
     `category_id` int(11) NOT NULL default 1 REFERENCES `product_category`(`id`),
     `name` varchar(255) NOT NULL,
     `short_description` varchar(2048) NULL,
-    `long_description` varchar(10000) NULL,
+    `long_description` varchar(255) NULL,
     `price` FLOAT NOT NULL,
     `discount` FLOAT default 0,
     `quantity` int(11) default 0,

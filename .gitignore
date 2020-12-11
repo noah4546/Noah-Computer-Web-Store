@@ -1,2 +1,4 @@
 # pictures
-images/products/*
+images/products/*.jpg
+images/products/*.png
+images/products/*.svg

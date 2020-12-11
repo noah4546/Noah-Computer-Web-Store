@@ -64,7 +64,7 @@ $(document).ready(function() {
             }
 
             let options = `
-            <form action="userOptions" method="POST">
+            <form action="php/userOptions.php" method="POST" class="options">
                 <input type="hidden" name="user" value="${user.id}">
                 <select name="option">
                     <option disabled selected value>Select an option</option>
@@ -72,6 +72,10 @@ $(document).ready(function() {
                     ${adminOption}
                     <option value="delete">Delete User</option>
                 </select>
+
+                <label for="confirm_${user.id}">Confirm</label>
+                <input type="checkbox" id="confirm_${user.id}" required>
+                <input type="submit">
             </form>
             `;
 

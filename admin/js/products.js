@@ -27,19 +27,34 @@ $(document).ready(function() {
 
             for (let i = 0; i < json.count; i++) {
 
+                let product = json.products[i];
+
                 products += `
-                <a href="editProduct.php?product=${json.products[i].id}">
                 <div class="product-item">
-                    <div>${json.products[i].id}</div>
-                    <div><img src="../images/products/${json.products[i].image}"></div>
-                    <div>${json.products[i].name}</div>
-                    <div>${json.products[i].category}</div>
-                    <div>$${json.products[i].price}</div>
-                    <div>$${json.products[i].discount}</div>
-                    <div>${json.products[i].quantity}</div>
-                    <div>${json.products[i].status}</div>
+                    <div>${product.id}</div>
+                    <div><img src="../images/products/${product.image}"></div>
+                    <div>${product.name}</div>
+                    <div>${product.category}</div>
+                    <div>$${product.price}</div>
+                    <div>$${product.discount}</div>
+                    <div>${product.quantity}</div>
+                    <div>${product.status}</div>
+                    <div>
+                        <form action="php/productOptions.php" method="POST" class="options">
+                            <input type="hidden" name="product" value="${product.id}">
+                            <select name="option">
+                                <option disabled selected value>Select an option</option>
+                                <option value="edit">Edit Product</option>
+                                <option value="feature">Set Featured</option>
+                                <option value="avail">Set Available</option>
+                                <option value="unavail">Set Unavalible</option>
+                                <option value="discontinue">Set Discontinued</option>
+                            </select>
+            
+                            <input type="submit">
+                        </form>
+                    </div>
                 </div>
-                </a>
                 `;
             }
         }

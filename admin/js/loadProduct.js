@@ -12,9 +12,20 @@ $(document).ready(function() {
         console.log(json);
 
         if (json.success == "true") {
-            document.getElementById("product_name").innerHTML = json.product.name;
+
+            $("#product_name").html(json.product.name);
+            $("#name").val(json.product.name);
+            $("#status").val(json.product.status);
+            $("#status").change();
+            $("#short_description").val(json.product.short_description);
+            $("#long_description").val(json.product.long_description);
+            $("#image_preview").attr("src", `../images/products/${json.product.image}`);
+            $("#price").val(json.product.price);
+            $("#discount").val(json.product.discount);
+            $("#quantity").val(json.product.quantity);
+        
         } else {
-            document.getElementById("product_name").innerHTML = "Couldn't Find Product";
+            $("#product_name").html("Couldn't Find Product");
         }
     }
 

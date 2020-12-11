@@ -24,9 +24,12 @@ $loggedin = $_SESSION['loggedin'];
 
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/search.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <header>
@@ -58,7 +61,13 @@ $loggedin = $_SESSION['loggedin'];
             </div>
         </header>
         <main>
-        
+            <h1>Featured</h1>
+            <div id="error">
+                
+            </div>
+            <div id="products">
+                
+            </div>
         </main>
         <footer>
         

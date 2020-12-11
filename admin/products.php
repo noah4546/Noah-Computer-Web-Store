@@ -100,6 +100,7 @@ if ($admin != "1") {
                     <div>Discount</div>
                     <div>Quantity</div>
                     <div>Status</div>
+                    <div>Options</div>
                 </div>
                 <div class="products" id="products">
                 </div>

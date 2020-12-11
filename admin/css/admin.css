@@ -27,3 +27,18 @@ table, tr, td, th {
     padding: 5px;
 }
 
+.options input, .options select {
+    float: left;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.options label {
+    float: left;
+    clear: left;
+    margin-right: 3px;
+}
+
+.options input[type=submit] {
+    clear: left;
+}

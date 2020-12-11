@@ -105,14 +105,24 @@ if ($product_id === null || empty($product_id)) {
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required/>
 
-                    <label for="short_description">Short Description (html)</label>
+                    <label for="status">Status</label>
+                    <select name="status" id="status" required>
+                        <option value="available">available</option>
+                        <option value="featured">featured</option>
+                        <option value="unavalible">unavalible</option>
+                        <option value="discontinued">discontinued</option>
+                    </select>
+
+                    <label for="short_description">Short Description</label>
                     <textarea name="short_description" id="short_description" rows="10" cols="30"></textarea>
 
-                    <label for="long_description">Long Description (html)</label>
-                    <textarea name="long_description" id="long_description" rows="10" cols="30"></textarea>
+                    <label for="long_description">Long Description (*.html)</label>
+                    <input type="file" name="long_description" id="long_description" accept=".html">
 
                     <label for="image">Image</label>
-                    <input type="file" name="image" id="image" />
+                    <input type="file" name="image" id="image" accept="image/*"/>
+
+                    <img src="" id="image_preview">
 
                     <label for="price">Price</label>
                     <input type="number" name="price" id="price" min="0" step=".01" required />

@@ -9,7 +9,7 @@
     max-width: 200px;
 }
 
-.product-name, .product-price {
+.product-name, .product-price, .product-stock {
     padding: 10px;
 }
 
@@ -46,7 +46,7 @@
     .product-item {
         border: 1px solid black;
         width: 200px;
-        height: 300px;
+        height: 350px;
     }
 
 }
