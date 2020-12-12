@@ -46,7 +46,7 @@ if ($admin != "1") {
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="../js/main.js"></script>
-        <script src="js/customers.js"></script>
+        <script src="js/orders.js"></script>
     </head>
     <body>
         <header>
@@ -93,10 +93,10 @@ if ($admin != "1") {
                 </ul>
             </div>
             <div class="content">
-                <h2>Customers</h2>
+                <h2>Orders</h2>
                 <div class="error"><?php echo $error ?></div>
-                <input type="text" id="query" placeholder="Filter users by username"/>
-                <div class="customers">
+                <input type="text" id="query" placeholder="Filter orders by name"/>
+                <div class="orders">
                 </div>
             </div>
         </main>

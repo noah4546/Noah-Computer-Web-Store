@@ -1,7 +1,10 @@
-main {
-    display: grid;
-    grid-template-columns: 150px auto;
-}
+/*
+    Noah Tomkins, 000790079
+    Created: 2020-12-11
+
+    I, Noah Tomkins, 000790079 certify that this material is my original work.  
+    No other person's work has been used without due acknowledgement.
+*/
 
 .menu {
     border-right: 2px solid lightgray;
@@ -42,4 +45,37 @@ table, tr, td, th {
 
 .options input[type=submit] {
     clear: left;
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  
+    main {
+        margin: 20px;
+    }
+
+    .menu {
+        border-right: none;
+        border-bottom: 2px solid lightgray;
+    }
+
+    .menu li {
+        display: inline;
+    }
+    
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 769px) {
+
+    main {
+        display: grid;
+        grid-template-columns: 150px auto;
+    }
+
+    .menu {
+        border-right: 2px solid lightgray;
+        border-bottom: none;
+        padding-right: 20px;
+    }
 }

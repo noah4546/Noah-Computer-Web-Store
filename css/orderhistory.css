@@ -48,3 +48,21 @@ main {
 main h1 {
     margin-bottom: 10px;
 }
+
+/* Mobile Screens */
+@media screen and (max-width: 900px) {
+  
+    main {
+        margin: 30px 20px;
+    }
+    
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 901px) {
+
+    main {
+        margin: 30px 15%;
+    }
+
+}

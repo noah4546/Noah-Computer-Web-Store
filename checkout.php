@@ -134,7 +134,7 @@ $_SESSION['placed_order'] = "true";
                         <div class="shipping-and-payment">
                             <div>
                                 <h3>Shipping address</h3>
-                                <div class="address">
+                                <div class="address review-address">
                                     <p>No address set</p>
                                 </div>
                             </div>

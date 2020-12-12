@@ -1,9 +1,4 @@
-main {
-    width: 80%;
-    margin: 15px 10%;
-    display: grid;
-    grid-template-columns: auto 350px;
-}
+
 
 #products, .shipping-and-payment, .place-order {
     border: 1px solid black;
@@ -160,4 +155,25 @@ main {
     padding: 3px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 900px) {
+  
+    main {
+        margin: 15px 20px;
+    }
+    
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 901px) {
+
+    main {
+        width: 90%;
+        margin: 15px 5%;
+        display: grid;
+        grid-template-columns: auto 350px;
+    }
+
 }

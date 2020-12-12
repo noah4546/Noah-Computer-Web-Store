@@ -88,15 +88,20 @@ $id = $_SESSION['id'];
                 <div><?php echo $cart_success ?></div>
                 <div id="cart_header">Price</div>
                 <div id="cart">
+                    
                 </div>
                 <div id="cart_total">
-
                 </div>
+                <div class="continue"><a href="index.php">Continue Shopping</a></div>
             </div>
             <div class="rhs">
                 <div class="checkout">
                     <form action="checkout.php" method="POST">
-                        <input type="submit" value="Proceed to Checkout">
+                        <input type="submit" id="checkout" value="Proceed to Checkout" disabled>
+                    </form>
+                    <div class="or">-- or --</div>
+                    <form action="index.php" method="POST">
+                        <input type="submit" value="Continue Shopping">
                     </form>
                 </div>
             </div>

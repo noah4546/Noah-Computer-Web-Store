@@ -2,6 +2,7 @@ $(document).ready(function() {
 
     let currentStep = 1;
     let hasAddress = 0;
+    let currentAddress = "";
 
     let user_url = "php/getUserInfo.php";
     fetch(user_url, {credentials: 'include'})
@@ -16,6 +17,7 @@ $(document).ready(function() {
     $("#step1 h2").click(function() {
         $(".step-info").hide();
         $("#step1 .step-info").show();
+        currentStep = 1;
     });
 
     $("#step2 h2").click(function() {
@@ -23,6 +25,7 @@ $(document).ready(function() {
             $(".step-info").hide();
             $("#step2 .step-info").show();
         }
+        currentStep = 2;
     });
 
     $("#step3 h2").click(function() {
@@ -61,7 +64,16 @@ $(document).ready(function() {
             $("#place_province").val(province);
             $("#place_postal").val(postal);
 
-            console.log($("#place_full_name").val());
+            $(".review-address").html(`
+            <ul>
+                <li>${full_name}</li>
+                <li>${street_address}</li>
+                <li>${city}</li>
+                <li>${province}</li>
+                <li>${postal}</li>
+            </ul>
+            `);
+
         } else {
             // use existing address selected
 
@@ -70,6 +82,8 @@ $(document).ready(function() {
             $("#place_city").val("");
             $("#place_province").val("");
             $("#place_postal").val("");
+
+            $(".review-address").html(currentAddress);
         }
 
         $(".step-info").hide();
@@ -91,7 +105,9 @@ $(document).ready(function() {
         if (json.success == "true") {
             if (json.user.address.street_address != null) {
                 hasAddress = true;
-                $(".address").html(`
+                
+                    
+                currentAddress = `
                 <ul>
                     <li>${json.user.address.name}</li>
                     <li>${json.user.address.street_address}</li>
@@ -99,7 +115,9 @@ $(document).ready(function() {
                     <li>${json.user.address.province}</li>
                     <li>${json.user.address.postal}</li>
                 </ul>
-                `);
+                `;
+
+                $(".address").html(currentAddress);
             } else {
                 $("#existing").hide();
                 $("#existingLbl").hide();

@@ -1,13 +1,7 @@
-.user-options {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    margin: 30px 0;
-}
-
 .user-options div {
     border: 1px solid black;
     border-radius: 10px;
-    margin: 10px 30px;
+    margin: 10px 20px;
     padding: 10px;
 }
 
@@ -84,6 +78,7 @@
         width: 100%;
     }
 
+    
 }
 
 /* Desktop Screens */
@@ -94,4 +89,9 @@
         margin: 0 10%;
     }
 
+    .user-options {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        margin: 30px 0;
+    }
 }

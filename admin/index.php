@@ -95,7 +95,7 @@ if ($admin != "1") {
                 <div class="welcome-info">
                     <div class="welcome-info-group">
                         <b>Orders:</b> This shows you all the orders from the customers, this will allow you to
-                        change the status of the order or delete an order.
+                        change the status of the order.
                     </div>
                     <div class="welcome-info-group">
                         <b>Products:</b> This shows you all the products that are being sold on this site

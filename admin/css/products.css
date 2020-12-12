@@ -1,6 +1,18 @@
+/*
+    Noah Tomkins, 000790079
+    Created: 2020-12-11
+
+    I, Noah Tomkins, 000790079 certify that this material is my original work.  
+    No other person's work has been used without due acknowledgement.
+*/
+
+body {
+    min-width: 1000px;
+}
+
 .product-header, .product-item {
     display: grid;
-    grid-template-columns: 50px 10% auto 150px 100px 100px 100px 150px 200px;
+    grid-template-columns: 50px 10% auto 125px 75px 75px 75px 100px 125px;
     border-bottom: 1px solid black;
     padding: 3px;
 }

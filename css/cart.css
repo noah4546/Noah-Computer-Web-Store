@@ -1,7 +1,5 @@
 main {
     margin: 20px;
-    display: grid;
-    grid-template-columns: 80% 20%;
 }
 
 #cart_header {
@@ -66,4 +64,33 @@ main {
     width: 100%;
     padding: 10px 3px;
     font-size: 1.1em;
+}
+
+.or {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.continue {
+    font-size: 1.5em;
+}
+
+/* Mobile Screens */
+@media screen and (max-width: 768px) {
+  
+    .cart-item input, .cart-item label {
+        font-size: 1.3em;
+    }
+    
+}
+
+/* Desktop Screens */
+@media screen and (min-width: 769px) {
+
+    main {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: auto 300px;
+    }
+
 }

@@ -53,8 +53,10 @@ $(document).ready(function() {
                     <div class="cart-item-price">$${parseFloat(price).toFixed(2)}</div>
                 </div>
                 `;
-
             }
+            $("#checkout").prop("disabled", false);
+        } else {
+            products = "<h2>Nothing in the cart, go find a cool proudct to buy!</h2>";
         }
 
         let items = `${totalProducts} item`;
