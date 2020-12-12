@@ -15,6 +15,12 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(products);
 
+    /**
+     * Takes in a json file of all the featured products
+     * and shows it to the index of the website
+     * 
+     * @param {JSON} json 
+     */
     function products(json) {
 
         console.log(json);

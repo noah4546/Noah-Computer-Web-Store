@@ -27,6 +27,12 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(products);
 
+    /**
+     * When you search for products it will retrive a
+     * json file with all the products
+     * 
+     * @param {JSON} json 
+     */
     function products(json) {
 
         console.log(json);

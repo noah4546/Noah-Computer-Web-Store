@@ -13,6 +13,7 @@ $(document).ready(function() {
     let products_div = document.getElementById("products");
     let query = document.getElementById("query");
 
+    // search all the products with a filter being by username
     query.addEventListener("keyup", function() {
 
         let search_url = "../php/products/getProducts.php?query=" + query.value;
@@ -22,11 +23,17 @@ $(document).ready(function() {
 
     });
 
+    // get all of the products when the page first loads
     let product_url = "../php/products/getProducts.php";
     fetch(product_url, { credentials: 'include' })
         .then(response => response.json())
         .then(products);
 
+    /**
+     * Takes in a JSON and displays all the products
+     * 
+     * @param {JSON} json 
+     */
     function products(json) {
 
         console.log(json);

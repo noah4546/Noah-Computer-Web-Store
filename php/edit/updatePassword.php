@@ -63,26 +63,4 @@ if ($success) {
     $_SESSION['edit_error'] = "error connecting to server";
 }
 
-/*
-if ($success) {
-    if ($stmt->rowCount() < 1) {
-
-        $command = "UPDATE `user`
-                    SET `email`=?
-                    WHERE `username`=?";
-        $stmt = $dbh->prepare($command);
-        $params = [$email, $_SESSION['username']];
-        $success = $stmt->execute($params);
-
-        if (!$success) {
-            $_SESSION['edit_error'] = "error updating username";
-        }
-    } else {
-        $_SESSION['edit_error'] = "username already in use";
-    }
-} else {
-    $_SESSION['edit_error'] = "error connecting to server";
-}
-*/
-
 header("Location: ../../user.php");

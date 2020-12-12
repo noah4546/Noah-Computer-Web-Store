@@ -17,6 +17,12 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(loadProduct);
 
+    /**
+     * Loads all the infromation about a product
+     * and shows to the product page
+     * 
+     * @param {JSON} json 
+     */
     function loadProduct(json) {
 
         console.log(json);

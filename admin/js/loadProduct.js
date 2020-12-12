@@ -12,11 +12,19 @@ $(document).ready(function() {
 
     let product_id = document.getElementById("product_id");
 
+    // get a product by the id
     let product_url = "../php/products/getProductById.php?id=" + product_id.innerHTML;
     fetch(product_url, { credentials: 'include' })
         .then(response => response.json())
         .then(displayProduct);
 
+    /**
+     * Takes in a json object of a product
+     * and fills the edit form with the current
+     * products items
+     * 
+     * @param {JSON} json 
+     */
     function displayProduct(json) {
 
         console.log(json);

@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     let filter = document.getElementById("query");
 
+    // allow for filtering orders by username
     filter.addEventListener("keyup", function() {
 
         let orders_url = "php/getAllOrders.php?filter=" + filter.value;
@@ -21,11 +22,18 @@ $(document).ready(function() {
 
     });
 
+    // get all the orders without a filter
     let orders_url = "php/getAllOrders.php";
     fetch(orders_url, { credentials: 'include' })
         .then(response => response.json())
         .then(displayOrders);
 
+    /**
+     * Takes in a json and outputs it to the screen
+     * in a user friendly manner
+     * 
+     * @param {JSON} json 
+     */
     function displayOrders(json) {
 
         console.log(json);
@@ -77,6 +85,8 @@ $(document).ready(function() {
             </form>
             `;
             
+            // get all the products that are in a specific order this allows for it
+            // to be a ul inside of the table
             let products_url = `php/orderInfo.php?order=${order.id}`;
             fetch(products_url, {credentials: 'include'})
                 .then(response => response.json())
@@ -104,6 +114,12 @@ $(document).ready(function() {
         $(".orders").html(orders);
     }
 
+    /**
+     * Fills the order into each of the main orders
+     * this displays it as a ul to make it easier to read
+     * 
+     * @param {JSON} json 
+     */
     function fillProducts(json) {
         if (json.success == "true") {
 

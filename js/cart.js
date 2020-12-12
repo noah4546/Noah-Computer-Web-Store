@@ -18,6 +18,12 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(products);
 
+    /**
+     * Gets a json file of all the products that are in
+     * the users cart and displays to the screen
+     * 
+     * @param {JSON} json 
+     */
     function products(json) {
 
         console.log(json);

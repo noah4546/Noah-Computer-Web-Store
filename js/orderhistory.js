@@ -15,6 +15,12 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(populateOrders);
 
+    /**
+     * Takes in a json file and shows all the past
+     * orders that the user made
+     * 
+     * @param {JSON} json 
+     */
     function populateOrders(json) {
 
         console.log(json);

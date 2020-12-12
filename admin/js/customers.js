@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     let filter = document.getElementById("query");
 
+    // when the user types in the filter input it will refine the items shown
     filter.addEventListener("keyup", function() {
 
         let users_url = "php/getAllUsers.php?filter=" + filter.value;
@@ -21,11 +22,19 @@ $(document).ready(function() {
 
     });
 
+    // gets all of the users (no filter)
     let users_url = "php/getAllUsers.php";
     fetch(users_url, { credentials: 'include' })
         .then(response => response.json())
         .then(displayUsers);
 
+    /**
+     * Takes in a JSON array and formats out to
+     * the screen a user-freindly version of the
+     * sql table
+     * 
+     * @param {JSON} json 
+     */
     function displayUsers(json) {
 
         console.log(json);
@@ -43,6 +52,7 @@ $(document).ready(function() {
                 <th>Options</th>
             </tr>
         `;
+
 
         for (let i = 0; i < json.count; i++) {
 
@@ -63,6 +73,7 @@ $(document).ready(function() {
                 `;
             }
 
+            // set all the options a admin can do on the user
             let activeOption = `<option value="activate">Activate User</option>`;
             let adminOption = `<option value="op">Add Admin</option>`;
 

@@ -24,12 +24,14 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(updateCart);
 
+    // if you click the step1 header it will bring you to step 1
     $("#step1 h2").click(function() {
         $(".step-info").hide();
         $("#step1 .step-info").show();
         currentStep = 1;
     });
 
+    // if you click the step2 header it will bring you to step 2
     $("#step2 h2").click(function() {
         if (currentStep >= 2) {
             $(".step-info").hide();
@@ -38,6 +40,7 @@ $(document).ready(function() {
         currentStep = 2;
     });
 
+    // if you click the step3 header it will bring you to step 3
     $("#step3 h2").click(function() {
         if (currentStep >= 3) {
             $(".step-info").hide();
@@ -45,14 +48,17 @@ $(document).ready(function() {
         }
     });
 
+    // hide the address form when the user chooses to use existing address
     $("#existing").click(function() {
         $(".address-form").hide();
     });
 
+    // show the address form when the user chooses to use a new address
     $("#new").click(function() {
         $(".address-form").show();
     });
 
+    // continue to step 2 button, checks to see if address was inputed
     $("#tostep2").click(function() {
         if ($("#new").prop("checked") == true) {
             // new address selected
@@ -108,6 +114,12 @@ $(document).ready(function() {
         currentStep = 3;
     });
 
+    /**
+     * Gets a json file with the current users
+     * address
+     * 
+     * @param {JSON} json 
+     */
     function updateAddress(json) {
 
         console.log(json);
@@ -137,6 +149,12 @@ $(document).ready(function() {
         }
     }
 
+    /**
+     * Updates all the products that came from the cart into
+     * the order summary step
+     * 
+     * @param {JSON} json 
+     */
     function updateCart(json) {
 
         console.log(json);

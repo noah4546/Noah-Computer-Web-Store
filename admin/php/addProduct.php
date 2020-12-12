@@ -21,6 +21,7 @@ $status = filter_input(INPUT_POST, "status", FILTER_SANITIZE_STRING);
 // can not sql inject or run php on product page
 $short_description = filter_input(INPUT_POST, "short_description");
 
+// Checks to see if all the values that were inputed are valid
 $paramsok = true;
 if ($name === null || empty($name)) {
     $paramsok = false;
@@ -52,6 +53,8 @@ if ($paramsok) {
     if ($success) {
         if ($stmt->rowCount() > 0) {
             
+            // Update the product if it already exists
+
             $command = "UPDATE `product` 
                         SET `name`=?, `short_description`=?, `price`=?, `discount`=?, `quantity`=?, `status`=?
                         WHERE `name`=?";
@@ -63,6 +66,8 @@ if ($paramsok) {
                 $_SESSION['error'] = "Unable to connect to server, please try again";
             }
         } else {
+
+            // Insert a new product
 
             $command = "INSERT INTO `product` (`name`, `short_description`, `price`, `discount`, `quantity`, `status`)
                         VALUES (?,?,?,?,?,?)";
@@ -86,6 +91,11 @@ if (!empty($_SESSION['error'])) {
     header("Location: ../products.php");
 }
 
+/**
+ * The following code is for uploading images and files, this was not covered in the
+ * course but is required to have a proper webstore.
+ */
+
 if ($success && isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
 
     $command = "SELECT `id` FROM `product` WHERE `name`=?";
@@ -104,20 +114,24 @@ if ($success && isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
         $file_name = "product" . $id . "." . $imageFileType;
         $target_file = $target_dir . $file_name;
 
+        // Check to see if the image was actualy an image
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
             $_SESSION['error'] = "Incorect file type, must be: jpg, png, jpeg, gif";
             header("Location: ../products.php");
             die();
         }
 
+        // Delete file if already exists
         if(file_exists($target_file)) {
             unlink($target_file);
         }
 
+        // Move the file from temp storage to the /images/products folder
         $success = move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
 
         if ($success) {
             
+            // Update the path to the image
             $command = "UPDATE `product` SET `image_url`=? WHERE `id`=?";
             $stmt = $dbh->prepare($command);
             $params = [$file_name, $id];
@@ -154,30 +168,34 @@ if ($success && isset($_FILES['long_description']) && !empty($_FILES['long_descr
         $file_name = "product" . $id . "." . $fileType;
         $target_file = $target_dir . $file_name;
 
+        // Check to see if the file is actualy an html file
         if($fileType != "html" && $fileType != "htm") {
             $_SESSION['error'] = "Incorect file type, must be: .html";
             header("Location: ../products.php");
             die();
         }
 
+        // Delete file if already exists
         if(file_exists($target_file)) {
             unlink($target_file);
         }
 
+        // Move the file from temp storage to the /products folder
         $success = move_uploaded_file($_FILES['long_description']['tmp_name'], $target_file);
 
         if ($success) {
             
+            // Update the path to the html document
             $command = "UPDATE `product` SET `long_description`=? WHERE `id`=?";
             $stmt = $dbh->prepare($command);
             $params = [$file_name, $id];
             $success = $stmt->execute($params);
 
             if (!$success) {
-                $_SESSION['error'] = "Unable to update image";
+                $_SESSION['error'] = "Unable to update html";
             }
         } else {
-            $_SESSION['error'] = "Unable to upload image";
+            $_SESSION['error'] = "Unable to upload html";
         }
     } else {
         $_SESSION['error'] = "Error connecting to server";

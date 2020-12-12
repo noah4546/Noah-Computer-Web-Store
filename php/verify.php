@@ -9,6 +9,11 @@
  * No other person"s work has been used without due acknowledgement.
  */
 
+    /**
+     * Verrifes the password given
+     * 
+     * @param $password
+     */
     function verifyPassword($password) {
 
         if ($password === null || empty($password)) {
@@ -31,6 +36,10 @@
         return true;
     }
 
+    /**
+     * Verifies two passwords make sure they
+     * are the same and each in correct format
+     */
     function verifyPasswords($passwordA, $passwordB) {
 
         if ($passwordA != $passwordB) {
@@ -45,6 +54,9 @@
 
     }
 
+    /**
+     * verifies username
+     */
     function verifyUsername($username) {
 
         if ($username === null || empty($username)) {
@@ -57,6 +69,9 @@
         return 1;
     }
 
+    /**
+     * verifies email
+     */
     function verifyEmail($email) {
 
         if ($email === null || empty($email)) {
