@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>Noah Computers - INFO</title>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+        <style>
+            h1, h2 {
+                text-align: center;
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
+                margin-left: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>Noah Tomkins Computer Webstore</h1>
+            <h2>This is a project for mohawk college</h2>
+            <h2>More info comming soon...</h2>
+            
+            <p><b>NOTES COMMENT COPIED HERE FOR PEOPLE WHO DONT HAVE ACCESS TO THE CODE</b></p>
+            <p>/**</p>
+            <p>* NOTES</p>
+            <p>* </p>
+            <p>* Product pages may have console errors this is due to manufacure html being out of date, this</p>
+            <p>*      is not an error on my end of code, but an external issue that I have no control over.</p>
+            <p>*      When you do decide to add a new product with the custom html description it should not</p>
+            <p>*      have any errors if it is up to the new standard of HTML5.</p>
+            <p>* </p>
+            <p>* I have added a banner to the top of each and every page saying that this is not a real shop.</p>
+            <p>*      I have done this beacuse I am posting it to my personal website as a protfolio item,</p>
+            <p>*      and I do not want anyone to think they are getting scamed on this website, even</p>
+            <p>*      though it will never ask you for your credit/debit card infromation.</p>
+            <p>* </p>
+            <p>* On the checkout page there is 3 steps, the second step being Payment info, I have a message</p>
+            <p>*      there saying that I am not taking any payment info and the user can just skip to the</p>
+            <p>*      next page, in the next page it says "visa ending in 1234" this is a fake credit card</p>
+            <p>*      number and the user will not be charged it is just simulating as if they already put</p>
+            <p>*      their credit/debit card infromation into the system, in actuality I would most likey</p>
+            <p>*      use a checkout system like "visa checkout" or paypal as they have much more security</p>
+            <p>*      and the user can trust the payment method</p>
+            <p>* </p>
+            <p>* All the sample products are taken from newegg.ca, in no way am I trying to steal their customers</p>
+            <p>*      or their designs, I am just using it as an example. If this site was to actualy go live</p>
+            <p>*      or be used as a starting point for another developer those examples should be changed</p>
+            <p>*      to their own example. Due to time crunch of this assignment I was unable to make my</p>
+            <p>*      own product descriptions, but in the "real world" the manufacture would give you the</p>
+            <p>*      full product page.</p>
+            <p>* </p>
+            <p>* To access the administrator page you must already be an admin. I have setup some sample accounts</p>
+            <p>*      1 regular user and 1 admin. The usernames and passwords are:</p>
+            <p>* </p>
+            <p>*          username: admin     password: adm1nP&ss</p>
+            <p>*          username: user      password: userP&ss</p>
+            <p>*      </p>
+            <p>*      you will only need the adminstrator account once to make a new admin, once you are done</p>
+            <p>*      that the original admin should be deleted for security reasons (you do not have to </p>
+            <p>*      nessasarily do that, but it will make the website more secure)</p>
+            <p>* </p>
+            <p>* I have also posted the code to my github account: <a href="https://github.com/noah4546/Noah-Computer-Web-Store">https://github.com/noah4546/Noah-Computer-Web-Store</a></p>
+            <p>*      and to my personal website: <a href="https://tnoah.ca/shop">https://tnoah.ca/shop</a></p>
+            <p>* </p>
+            <p>* </p>
+            <p>* CHANGELOG</p>
+            <p>* </p>
+            <p>* SQL DATABASE:</p>
+            <p>*      REMOVED: cart_item table, beacuse it was redundant. The cart table is now a collection of</p>
+            <p>*              cart itmes indexed to the user_id</p>
+            <p>* </p>
+            <p>*      ADDED: order_address table to allow for addresses to be directly connected to the order</p>
+            <p>*              instead of being deleted when a user is deleted. When a user is deleted the order</p>
+            <p>*              still connects to a location to ship or to refund</p>
+            <p>*      </p>
+            <p>*      ADDED: name feild to addresses, beacuse I forgot you need a name on the package to deliver</p>
+            <p>*              to a customer</p>
+            <p>* </p>
+            <p>* Functions:</p>
+            <p>* </p>
+            <p>*      REMOVED: delete product, beacuse if you delete a product it will no longer be able to be</p>
+            <p>*                  seen in a users order history, replaced it with a status of discontinued</p>
+            <p>* </p>
+            <p>*      ADDED: UPDATE for email, allowing for users to change their email address</p>
+            <p>* </p>
+            <p>*      REMOVED: cancel/delete order, ran out of time to add in that function, very complex beacuse</p>
+            <p>*                  the administrator would most likely want to keep a copy of every order even if</p>
+            <p>*                  the user deletes it, in this case they would have to reach out directly to</p>
+            <p>*                  one of the service repersentives to have them cancel the order.</p>
+            <p>* </p>
+            <p>*      REMOVED: product categories, ran out of time. Right now whenever you add a new product it</p>
+            <p>*                  will set it to uncatigorized, in the future after this assignment and I want</p>
+            <p>*                  to build on this project I will add categories to the website allowing the </p>
+            <p>*                  user to navigate through the website easier. At the current moment you still</p>
+            <p>*                  can search all of the products and see the featured products.</p>
+            <p>* </p>
+            <p>* Other:</p>
+            <p>* </p>
+            <p>*      REMOVED: administrators can not force a user to reset their password, ran out of time.</p>
+            <p>*      </p>
+            <p>*      REMOVED: unactive accounts, the system is in place to disable users, but I did not have</p>
+            <p>*                  time to implement it.</p>
+            <p>*  </p>
+            <p>*/</p>
+        </main>
+        <footer>
+        
+        </footer>
+    </body>
+</html>
