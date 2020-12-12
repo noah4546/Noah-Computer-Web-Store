@@ -43,7 +43,7 @@ $id = $_SESSION['id'];
         <link rel="stylesheet" href="css/cart.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="js/main.js"></script>
+        
         <script src="js/cart.js"></script>
     </head>
     <body>

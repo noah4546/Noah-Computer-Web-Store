@@ -44,7 +44,7 @@ $_SESSION['placed_order'] = "true";
         <link rel="stylesheet" href="css/checkout.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="js/main.js"></script>
+        
         <script src="js/checkout.js"></script>
     </head>
     <body>
